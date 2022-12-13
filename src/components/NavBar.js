@@ -1,5 +1,6 @@
 import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
+import { Fragment } from "react";
+import { styled, alpha, makeStyles } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,6 +14,40 @@ import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import SettingsIcon from "@mui/icons-material/Settings";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
+import Button from "@mui/material/Button";
+import Movies from "../components/Movies";
+import Trends from "../components/Trends";
+import Pricing from "../components/Pricing";
+import { Route, Routes, NavLink } from "react-router-dom";
+import { blue, red } from "@mui/material/colors";
+import TvShows from "./TvShows";
+
+//TODO: Add options to the left menu icon
+//TODO Fix Dynamic height change of toolbar covering content
+
+// Navigation button names
+// const pages = ["MOVIES", "TV SHOWS", "TRENDING", "PRICING"];
+const pages = [
+  { label: "MOVIES", route: "" },
+  { label: "TV SHOWS", route: "tvshows" },
+  { label: "TRENDING", route: "trending" },
+  { label: "PRICING", route: "pricing" },
+];
+
+// Needed to render conect below the AppBar
+const Wrapper = styled("div")(({ theme }) => {
+  console.log(theme.mixins.toolbar);
+  return {
+    paddingTop: "56px",
+    "@media (min-width:0px)": { "@media (min-width:0px)": { paddingTop: 48 } },
+    "@media (min-width:600px)": { paddingTop: "56px" },
+    "@media (min-width:900px)": { paddingTop: "84px" },
+    "@media (min-width:1250px)": { paddingTop: "60px" },
+  };
+});
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -27,6 +62,18 @@ const Search = styled("div")(({ theme }) => ({
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(3),
     width: "auto",
+  },
+}));
+
+const BlueSwitch = styled(Switch)(({ theme }) => ({
+  "& .MuiSwitch-switchBase.Mui-checked": {
+    color: blue[600],
+    "&:hover": {
+      backgroundColor: alpha(blue[600], theme.palette.action.hoverOpacity),
+    },
+  },
+  "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+    backgroundColor: blue[100],
   },
 }));
 
@@ -55,8 +102,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  // If I have issues with navigation revist state
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [isLightMode, setIsLightMode] = React.useState(true);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -72,6 +122,10 @@ export default function PrimarySearchAppBar() {
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
   };
 
   const handleMobileMenuOpen = (event) => {
@@ -139,68 +193,134 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar>
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
+    <div>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar>
+          {/* To change AppBar background color sx={{ backgroundColor: "red" }} */}
+          <Toolbar sx={{ backgroundColor: isLightMode ? "" : "black" }}>
             {/* Menu Icon */}
-            <MenuIcon onClick={""} />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-          >
-            VueMix
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-              onChange={(event) => console.log(event.target.value)}
-            />
-          </Search>
-          {/* Box needed to separate elements */}
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
               size="large"
-              //   edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
+              edge="start"
               color="inherit"
+              aria-label="open drawer"
+              sx={{ mr: 2 }}
+              onClick={() => {}}
             >
-              <AccountCircle />
+              <MenuIcon />
             </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
+            {/* Title */}
+            <Typography
+              variant="h4"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "none", sm: "block" } }}
             >
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </Box>
+              VueMix
+            </Typography>
+
+            {/* Nav to other pages */}
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: {
+                  xs: "none",
+                  md: "flex",
+                  paddingLeft: "4rem",
+                  gap: "4rem",
+                },
+              }}
+            >
+              {pages.map((page) => (
+                <NavLink to={page.route} style={{ textDecoration: "none" }}>
+                  <Button
+                    key={page.route}
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      my: 2,
+                      color: "white",
+                      display: "block",
+
+                      // marginLeft: "1rem",
+                    }}
+                  >
+                    {page.label}
+                  </Button>
+                </NavLink>
+              ))}
+            </Box>
+
+            {/* Search field */}
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+                onChange={(event) => console.log(event.target.value)}
+              />
+            </Search>
+            {/* Toggle Switch */}
+            {/* Mode Label maybe remove?? */}
+            <Fragment>
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <BlueSwitch
+                      defaultChecked
+                      onClick={() => {
+                        setIsLightMode(!isLightMode);
+                      }}
+                    />
+                  }
+                  label="Mode"
+                />
+              </FormGroup>
+            </Fragment>
+            {/* Box needed to separate elements */}
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <IconButton
+                size="large"
+                //   edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </Box>
+            <Box sx={{ display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MoreIcon />
+              </IconButton>
+            </Box>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
+      </Box>
+      {/* <div style={{ paddingTop: "56px" }}> */}
+      <Wrapper>
+        <Routes>
+          <Route path="" element={<Movies />}></Route>
+          <Route path="/tvshows" element={<TvShows />}></Route>
+          <Route path="trending" element={<Trends />}></Route>
+          <Route path="/pricing" element={<Pricing />}></Route>
+        </Routes>
+      </Wrapper>
+
+      {/* </div> */}
+    </div>
   );
 }
