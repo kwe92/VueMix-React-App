@@ -5,7 +5,7 @@ import useMoviesState, { useTvShowsState } from "../Hooks/apiStateHooks";
 import styled from "styled-components";
 
 //TODO: Move duplicated styled components to their own files and share with pages
-
+///TODO: Add a card on hover
 const StyledImage = styled.img`
   display: block;
   width: 30vw;
@@ -64,8 +64,6 @@ const StyledDivOverlay = styled.div`
 
 const TvShows = (props) => {
   const [movies, setMoviesState] = useTvShowsState();
-
-  console.log("Results From useMoviesState", movies);
 
   const movieList = movies.map((movie) => (
     <div key={movie.id} style={{ position: "relative" }}>
