@@ -1,7 +1,16 @@
-import React, { Fragment } from "react";
+import React from "react";
+import { useTrendingState } from "../Hooks/apiStateHooks";
+import BaseLayoutGrid from "./BaseLayoutGrid";
 
 const Trends = (props) => {
-  return <Fragment>Trends</Fragment>;
+  const [trendingData, setTrendingState] = useTrendingState();
+
+  return (
+    <BaseLayoutGrid
+      stateParams={[trendingData, setTrendingState]}
+      mode={props.mode}
+    ></BaseLayoutGrid>
+  );
 };
 
 export default Trends;
