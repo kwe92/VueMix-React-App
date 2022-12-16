@@ -16,7 +16,7 @@ const App = (props) => {
       className="App"
       style={{
         //TODO: Change background color based on mode light or dark
-        backgroundColor: !isLightMode && "grey",
+        backgroundColor: !isLightMode && "#121212",
         position: "absolute",
         left: 0,
         width: "100%",
