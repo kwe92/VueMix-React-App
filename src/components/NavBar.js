@@ -325,10 +325,19 @@ export default function PrimarySearchAppBar(props) {
       {/* Routes */}
       <Wrapper>
         <Routes>
-          <Route path="" element={<Movies />}></Route>
-          <Route path="/tvshows" element={<TvShows />}></Route>
-          <Route path="trending" element={<Trends />}></Route>
-          <Route path="/pricing" element={<Pricing />}></Route>
+          <Route path="" element={<Movies mode={isLightMode} />}></Route>
+          <Route
+            path="/tvshows"
+            element={<TvShows mode={isLightMode} />}
+          ></Route>
+          <Route
+            path="trending"
+            element={<Trends mode={isLightMode} />}
+          ></Route>
+          <Route
+            path="/pricing"
+            element={<Pricing mode={isLightMode} />}
+          ></Route>
         </Routes>
       </Wrapper>
 
