@@ -101,7 +101,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar(props) {
   // If I have issues with navigation revist state
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -193,7 +193,7 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
-    <div>
+    <Fragment>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar>
           {/* To change AppBar background color sx={{ backgroundColor: "red" }} */}
@@ -231,8 +231,18 @@ export default function PrimarySearchAppBar() {
                 },
               }}
             >
+              {/* NAV LINK START */}
               {pages.map((page) => (
-                <NavLink to={page.route} style={{ textDecoration: "none" }}>
+                <NavLink
+                  to={page.route}
+                  style={({ isActive }) => {
+                    //TODO: Mark which page button is selected | add onHover effects and underlines
+
+                    return {
+                      textDecoration: isActive ? "none" : "none",
+                    };
+                  }}
+                >
                   <Button
                     key={page.route}
                     onClick={handleCloseNavMenu}
@@ -247,6 +257,7 @@ export default function PrimarySearchAppBar() {
                     {page.label}
                   </Button>
                 </NavLink>
+                //  NAV END START
               ))}
             </Box>
 
@@ -271,6 +282,7 @@ export default function PrimarySearchAppBar() {
                       defaultChecked
                       onClick={() => {
                         setIsLightMode(!isLightMode);
+                        props.getMode(!isLightMode);
                       }}
                     />
                   }
@@ -310,7 +322,7 @@ export default function PrimarySearchAppBar() {
         {renderMobileMenu}
         {renderMenu}
       </Box>
-      {/* <div style={{ paddingTop: "56px" }}> */}
+      {/* Routes */}
       <Wrapper>
         <Routes>
           <Route path="" element={<Movies />}></Route>
@@ -321,6 +333,6 @@ export default function PrimarySearchAppBar() {
       </Wrapper>
 
       {/* </div> */}
-    </div>
+    </Fragment>
   );
 }
