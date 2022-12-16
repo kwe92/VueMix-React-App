@@ -1,43 +1,60 @@
-import * as React from "react";
-import { FaPlay } from "react-icons/fa";
-import styled from "styled-components";
-
-const StyledWrapper = styled.div`
-  display: inline;
-  padding: 0;
-  margin: 0;
-  bottom: 0;
-`;
-
-const StyledFaPlay = styled(FaPlay)`
-  color: white;
-  position: absolute;
-  bottom: 50%;
-  left: 50%;
-  font-size: 3rem;
-  display: none;
-  ${StyledWrapper}:hover & {
-    display: block;
-  }
-`;
-
-const StyledDiv = styled.div`
-  max-height: 42vw;
-  max-width: 30vw;
-  box-shadow: 2px 6px 8px #888888;
-  overflow: scroll;
-  border-radius: 20px;
-`;
+import React from "react";
+import { StyledCard } from "../styles/styled_components/styles";
+import { AiFillStar } from "react-icons/ai";
 
 //TODO: Remove inline styles
+//TODO: Fix coloring of text by mode
 const DetailCard = (props) => (
-  <StyledDiv>
-    <img src={props.image} style={{ height: "22vw", width: "30vw" }}></img>
-    <div style={{ padding: "0px 1rem 0.5rem 1rem" }}>
-      <h2>{props.title}</h2>
-      <p>{props.overview}</p>
+  <StyledCard>
+    <img src={props.image} style={{ height: "18vw", width: "30vw" }} />
+    <div style={{ padding: "0rem 1rem", textAlign: "center" }}>
+      <h2 style={{ color: props.isLightMode ? "black" : "white" }}>
+        {props.title}
+      </h2>
+      <p
+        style={{
+          color: props.isLightMode ? "black" : "white",
+          margin: "0rem 0rem 0.25rem 0rem",
+        }}
+      >
+        {props.releaseDate}
+      </p>
+      <div
+        style={{
+          display: "flex",
+          // backgroundColor: "red",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <p
+          style={{
+            paddingRight: "0.25rem",
+            margin: 0,
+            color: props.isLightMode ? "black" : "white",
+          }}
+        >
+          Rating:
+        </p>
+        <AiFillStar style={{ color: "gold" }}></AiFillStar>
+        <p
+          style={{
+            paddingLeft: "0.25rem",
+            margin: 0,
+            color: props.isLightMode ? "black" : "white",
+          }}
+        >
+          {props.rating}
+        </p>
+      </div>
     </div>
-  </StyledDiv>
+
+    <div style={{ padding: "0px 1rem 0.5rem" }}>
+      <p style={{ color: props.isLightMode ? "black" : "white" }}>
+        {props.overview}
+      </p>
+    </div>
+  </StyledCard>
 );
 
 export default DetailCard;
