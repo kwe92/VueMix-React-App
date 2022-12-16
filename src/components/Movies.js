@@ -1,15 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { AiFillPlayCircle } from "react-icons/ai";
+import DetailCard from "./DetailCard";
 import { FaPlay } from "react-icons/fa";
 import useMoviesState from "../Hooks/apiStateHooks";
 import styled from "styled-components";
-
-const StyledImage = styled.img`
-  display: block;
-  width: 30vw;
-  height: 42vw;
-  border-radius: 20px;
-`;
+//TODO: Make hover effect work for detail card
+//TODO: Add comments to named components and refactor to keep code dry
+//TODO: Refactor hooks into custom hooks
 
 // const StyledAiFillPlayCircle = styled(AiFillPlayCircle)`
 //   color: red;
@@ -18,12 +15,38 @@ const StyledImage = styled.img`
 //   left: 50%;
 // `;
 
+const StyledImage = styled.img`
+  display: block;
+  width: 30vw;
+  height: 42vw;
+  border-radius: 20px;
+`;
+
+// Needed to add hover effect
+const StyledWrapper = styled.div`
+  display: inline;
+  padding: 0;
+  margin: 0;
+  bottom: 0;
+`;
+
 const StyledFaPlay = styled(FaPlay)`
   color: white;
   position: absolute;
   bottom: 50%;
   left: 50%;
   font-size: 3rem;
+  display: none;
+  ${StyledWrapper}:hover & {
+    display: block;
+  }
+`;
+
+const StyledDetailCard = styled(DetailCard)`
+  display: none;
+  ${StyledWrapper}:hover & {
+    display: block;
+  }
 `;
 
 const StyledUl = styled.ul`
@@ -35,21 +58,8 @@ const StyledUl = styled.ul`
   padding-left: 0px;
 `;
 
-const StyledDiv = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: 0.3s ease;
-  background-color: red;
-`;
-
 const StyledDivOverlay = styled.div`
-  background-image: url(${(props) => props.src});
+  // background-image: url(${(props) => props.src});
   background-color: blue;
   width: 30vw;
   height: 42vw;
@@ -66,19 +76,19 @@ const Movies = (props) => {
   console.log("Results From useMoviesState", movies);
 
   const movieList = movies.map((movie) => (
-    <div key={movie.id} style={{ position: "relative" }}>
-      <li style={{ listStyleType: "none" }}>
-        {/* <StyledImage
-          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-        /> */}
-        <StyledDivOverlay
-          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-        ></StyledDivOverlay>
-        {/* <div style={{ backgroundColor: "red", width: 100, height: 100 }}></div> */}
-        <StyledDiv>
+    <div style={{ position: "relative" }}>
+      <li style={{ listStyleType: "none", bottom: 0, padding: 0, margin: 0 }}>
+        <StyledWrapper>
+          <StyledImage
+            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+          />
+          {/* <StyledDetailCard
+            image={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+            title={movie.title}
+            overview={movie.overview}
+          ></StyledDetailCard> */}
           <StyledFaPlay />
-        </StyledDiv>
-        {/* <div>{movie.original_title}</div> */}
+        </StyledWrapper>
       </li>
     </div>
   ));
