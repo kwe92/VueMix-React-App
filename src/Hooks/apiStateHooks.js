@@ -9,7 +9,7 @@ const useMoviesState = () => {
   const [moviesData, SetMoviesData] = useState([]);
 
   //TODO: Fix
-  // Movies API Call
+  // Movies API call
   const movieCall = async () => {
     const data = await axios.get(api);
     const results = data.data.results;
@@ -30,8 +30,6 @@ const useTvShowsState = () => {
   const api = `https://api.themoviedb.org/3/discover/tv?api_key=${apikey}`;
   const [tvShowsData, SetTvShowsData] = useState([]);
 
-  //TODO: Fix
-  // Movies call
   const tvShow = async () => {
     const data = await axios.get(api);
     const results = data.data.results;
@@ -47,6 +45,27 @@ const useTvShowsState = () => {
   return [tvShowsData, SetTvShowsData];
 };
 
+// Trending API Call
+// TV Shows API Call
+const useTrendingState = () => {
+  const api = `https://api.themoviedb.org/3/trending/all/week?api_key=${apikey}`;
+  const [trendingData, setTrendingState] = useState([]);
+
+  const trending = async () => {
+    const data = await axios.get(api);
+    const results = data.data.results;
+    console.log("Results TV", results);
+    setTrendingState(results);
+  };
+
+  const getTrending = () => {
+    trending();
+  };
+
+  useEffect(getTrending, []);
+  return [trendingData, setTrendingState];
+};
+
 export default useMoviesState;
 
-export { useTvShowsState };
+export { useTvShowsState, useTrendingState };
