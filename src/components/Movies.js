@@ -1,5 +1,5 @@
 import React from "react";
-import useMoviesState from "../Hooks/apiStateHooks";
+import useMoviesState from "../hooks/apiStateHooks";
 import BaseLayoutGrid from "./BaseLayoutGrid";
 
 const Movies = (props) => {
@@ -8,6 +8,7 @@ const Movies = (props) => {
     <BaseLayoutGrid
       stateParams={[movies, setMoviesState]}
       mode={props.mode}
+      filterVal={props.filterVal}
     ></BaseLayoutGrid>
   );
 };
