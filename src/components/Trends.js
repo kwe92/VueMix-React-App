@@ -1,5 +1,5 @@
 import React from "react";
-import { useTrendingState } from "../Hooks/apiStateHooks";
+import { useTrendingState } from "../hooks/apiStateHooks";
 import BaseLayoutGrid from "./BaseLayoutGrid";
 
 const Trends = (props) => {
@@ -9,6 +9,7 @@ const Trends = (props) => {
     <BaseLayoutGrid
       stateParams={[trendingData, setTrendingState]}
       mode={props.mode}
+      filterVal={props.filterVal}
     ></BaseLayoutGrid>
   );
 };
