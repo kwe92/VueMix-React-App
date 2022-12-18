@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Fragment } from "react";
 import { styled, alpha, makeStyles } from "@mui/material/styles";
+import styledSC from "styled-components";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -37,17 +38,28 @@ const pages = [
   { label: "PRICING", route: "pricing" },
 ];
 
+// // Needed to render conect below the AppBar
+// const Wrapper = styled("div")(({ theme }, props) => {
+//   console.log(theme.mixins.toolbar);
+//   return {
+//     paddingTop: "56px",
+//     "@media (min-width:0px)": { "@media (min-width:0px)": { paddingTop: 48 } },
+//     "@media (min-width:600px)": { paddingTop: "56px" },
+//     "@media (min-width:900px)": { paddingTop: "84px" },
+//     "@media (min-width:1250px)": { paddingTop: "60px" },
+//     backgroundColor: props.isLightMode ? "white" : "black",
+//   };
+// });
+
 // Needed to render conect below the AppBar
-const Wrapper = styled("div")(({ theme }) => {
-  console.log(theme.mixins.toolbar);
-  return {
-    paddingTop: "56px",
-    "@media (min-width:0px)": { "@media (min-width:0px)": { paddingTop: 48 } },
-    "@media (min-width:600px)": { paddingTop: "56px" },
-    "@media (min-width:900px)": { paddingTop: "84px" },
-    "@media (min-width:1250px)": { paddingTop: "60px" },
-  };
-});
+const Wrapper = styledSC.div`
+  padding-top: 56px;
+  // @media (min-width: 0px): padding-top: 48px;
+  // @media (min-width: 600px): padding-top: 56px;
+  // @media (min-width: 900px): {padding-top: 80px}
+  // @media (min-width: 1250px): padding-top: 60px;
+  background-color: ${(props) => (props.isLightMode ? "white" : "#121212")};
+`;
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -101,15 +113,24 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+// Functional Component START
 export default function PrimarySearchAppBar(props) {
   // If I have issues with navigation revist state
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [isLightMode, setIsLightMode] = React.useState(true);
-
+  const [userInput, setUserInput] = React.useState("");
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  // Function to set user input
+  const handleUserInput = (event) => {
+    setUserInput(() => {
+      console.log(event.target.value);
+      return event.target.value;
+    });
+  };
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -269,7 +290,8 @@ export default function PrimarySearchAppBar(props) {
               <StyledInputBase
                 placeholder="Search…"
                 inputProps={{ "aria-label": "search" }}
-                onChange={(event) => console.log(event.target.value)}
+                onChange={handleUserInput}
+                value={userInput}
               />
             </Search>
             {/* Toggle Switch */}
@@ -323,16 +345,19 @@ export default function PrimarySearchAppBar(props) {
         {renderMenu}
       </Box>
       {/* Routes */}
-      <Wrapper>
+      <Wrapper isLightMode={isLightMode}>
         <Routes>
-          <Route path="" element={<Movies mode={isLightMode} />}></Route>
+          <Route
+            path=""
+            element={<Movies mode={isLightMode} filterVal={userInput} />}
+          ></Route>
           <Route
             path="/tvshows"
-            element={<TvShows mode={isLightMode} />}
+            element={<TvShows mode={isLightMode} filterVal={userInput} />}
           ></Route>
           <Route
             path="trending"
-            element={<Trends mode={isLightMode} />}
+            element={<Trends mode={isLightMode} filterVal={userInput} />}
           ></Route>
           <Route
             path="/pricing"
