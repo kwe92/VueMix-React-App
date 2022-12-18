@@ -1,4 +1,3 @@
-import "./App.css";
 import NavBar from "./components/NavBar";
 import Movies from "./components/Movies";
 import { useState } from "react";
@@ -15,12 +14,13 @@ const App = (props) => {
     <div
       className="App"
       style={{
-        //TODO: Change background color based on mode light or dark
+        //TODO: Change lignt mode to a . different color maybe a olive green or soft green
+        // this line is needed to cover screen when filtering
         backgroundColor: !isLightMode && "#121212",
         position: "absolute",
         left: 0,
         width: "100%",
-        height: "auto",
+        height: "100%",
       }}
     >
       <NavBar getMode={modeHandler} />

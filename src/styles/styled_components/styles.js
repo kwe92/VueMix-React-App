@@ -47,7 +47,7 @@ const StyledCard = styled.div`
   max-width: 30vw;
   height: 42vw;
   max-width: 30vw;
-  box-shadow: 2px 6px 8px #888888;
+  box-shadow: 1px 2px 4px #888888;
   overflow: scroll;
   border-radius: 20px;
   // display: none;

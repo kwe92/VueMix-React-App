@@ -5,7 +5,7 @@ const StyledCardContentImage = styled.img`
   height: 18vw;
   width: 30vw;
 `;
-const StyledCardContentRow = styled.div`
+const StyledCardContentInfo = styled.div`
   padding: 0rem 1rem;
   text-align: center;
 `;
@@ -38,7 +38,7 @@ const StyledCardContentP2 = styled(StyledCardContentP)`
 
 export {
   StyledCardContentImage,
-  StyledCardContentRow,
+  StyledCardContentInfo,
   StyledCardContentTitle,
   StyledCardContentDate,
   StyledCardContentRating,

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import apikey from "../private/apikey/key";
+import { dataModel } from "../models/dataModel";
 
 // A Custom Hook to get movies state
 // Similar to a Provider on flutter??
@@ -13,7 +14,7 @@ const useMoviesState = () => {
   const movieCall = async () => {
     const data = await axios.get(api);
     const results = data.data.results;
-    console.log("Results", results);
+    // console.log("Results", results);
     SetMoviesData(results);
   };
 
@@ -22,7 +23,21 @@ const useMoviesState = () => {
   };
 
   useEffect(getMovies, []);
-  return [moviesData, SetMoviesData];
+  //todo: add secondary poster
+  return [
+    moviesData.map((movie) =>
+      dataModel(
+        movie.original_title,
+        movie.overview,
+        movie.release_date,
+        movie.vote_average,
+        movie.vote_count,
+        movie.poster_path,
+        movie.backdrop_path
+      )
+    ),
+    SetMoviesData,
+  ];
 };
 
 // TV Shows API Call
@@ -42,7 +57,21 @@ const useTvShowsState = () => {
   };
 
   useEffect(getTvShow, []);
-  return [tvShowsData, SetTvShowsData];
+  return [
+    tvShowsData.map((tvshow) =>
+      dataModel(
+        tvshow.original_name,
+        tvshow.overview,
+        tvshow.first_air_date,
+        tvshow.vote_average,
+        tvshow.vote_count,
+        tvshow.poster_path,
+        tvshow.backdrop_path
+      )
+    ),
+    ,
+    SetTvShowsData,
+  ];
 };
 
 // Trending API Call
@@ -54,7 +83,7 @@ const useTrendingState = () => {
   const trending = async () => {
     const data = await axios.get(api);
     const results = data.data.results;
-    console.log("Results TV", results);
+    console.log("Results Trending", results);
     setTrendingState(results);
   };
 
@@ -63,7 +92,20 @@ const useTrendingState = () => {
   };
 
   useEffect(getTrending, []);
-  return [trendingData, setTrendingState];
+  return [
+    trendingData.map((trending) =>
+      dataModel(
+        trending.original_title,
+        trending.overview,
+        trending.release_date,
+        trending.vote_average,
+        trending.vote_count,
+        trending.poster_path,
+        trending.backdrop_path
+      )
+    ),
+    setTrendingState,
+  ];
 };
 
 export default useMoviesState;
