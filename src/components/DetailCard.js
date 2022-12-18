@@ -3,7 +3,7 @@ import { StyledCard } from "../styles/styled_components/styles";
 import { AiFillStar } from "react-icons/ai";
 import {
   StyledCardContentImage,
-  StyledCardContentRow,
+  StyledCardContentInfo,
   StyledCardContentTitle,
   StyledCardContentDate,
   StyledCardContentRating,
@@ -11,11 +11,38 @@ import {
   StyledCardContentP2,
 } from "../styles/styled_components/card_styles/cardStyles";
 
+// TODO: ul tag should be its own styled component
+// TODO: Look for inline css to refactor into styled components
+
 const DetailCard = (props) => {
+  // Count of stars
+  // example;
+  //    8.80 / 10 * 5 = 4.4 floored to the value of 4.0 for star cnt
+  const getStarCnt = () =>
+    Math.floor((parseFloat(props.object.vote_average).toFixed(2) / 10) * 5);
+
+  const round2 = (num) => parseFloat(num).toFixed(2);
+
+  const cntStars = getStarCnt();
+
+  // Create an array of stars
+  let stars = [];
+  for (let i = 0; i < cntStars; i++) {
+    stars.push(
+      <li key={i}>
+        <AiFillStar
+          style={{
+            color: "gold",
+          }}
+        ></AiFillStar>
+      </li>
+    );
+  }
+
   return (
     <StyledCard>
       <StyledCardContentImage src={props.image} />
-      <StyledCardContentRow>
+      <StyledCardContentInfo>
         <StyledCardContentTitle isLightMode={props.isLightMode}>
           {props.object.original_title}
         </StyledCardContentTitle>
@@ -26,14 +53,30 @@ const DetailCard = (props) => {
           <StyledCardContentP isLightMode={props.isLightMode}>
             Rating:
           </StyledCardContentP>
-          <AiFillStar
-            style={{ color: "gold", paddingRight: "0.25rem" }}
-          ></AiFillStar>
+
           <StyledCardContentP isLightMode={props.isLightMode}>
-            {parseFloat(props.object.vote_average).toFixed(2)}
+            {round2(props.object.vote_average)}
           </StyledCardContentP>
+          {/* Star list */}
+          <ul
+            style={{
+              display: "flex",
+              padding: "0rem 0rem 0rem 0.5rem",
+              margin: 0,
+              listStyle: "none",
+              gap: "0.25rem",
+            }}
+          >
+            {stars}
+          </ul>
         </StyledCardContentRating>
-      </StyledCardContentRow>
+        <StyledCardContentP
+          isLightMode={props.isLightMode}
+          style={{ paddingTop: "0.5rem" }}
+        >
+          Votes: {props.object.vote_count}
+        </StyledCardContentP>
+      </StyledCardContentInfo>
       <StyledCardContentP2 isLightMode={props.isLightMode}>
         {props.object.overview}
       </StyledCardContentP2>
