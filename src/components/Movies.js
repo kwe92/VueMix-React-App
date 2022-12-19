@@ -9,6 +9,7 @@ const Movies = (props) => {
       stateParams={[movies, setMoviesState]}
       mode={props.mode}
       filterVal={props.filterVal}
+      getTitle={props.getTitle}
     ></BaseLayoutGrid>
   );
 };
