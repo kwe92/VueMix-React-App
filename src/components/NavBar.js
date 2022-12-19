@@ -26,30 +26,19 @@ import { Route, Routes, NavLink } from "react-router-dom";
 import { blue, red } from "@mui/material/colors";
 import TvShows from "./TvShows";
 
-//TODO: Add options to the left menu icon
-//TODO Fix Dynamic height change of toolbar covering content
+// TODO: Add options to the left menu icon
+// TODO: Fix Dynamic height change of toolbar covering content
+// TODO: add getTitle={props.getTitle} to tv shows and trending | add trailers
+// TODO: Refactor this mess of a component, this is making me sad so work in
+// TODO: Add type script
 
 // Navigation button names
-// const pages = ["MOVIES", "TV SHOWS", "TRENDING", "PRICING"];
 const pages = [
   { label: "MOVIES", route: "" },
   { label: "TV SHOWS", route: "tvshows" },
   { label: "TRENDING", route: "trending" },
   { label: "PRICING", route: "pricing" },
 ];
-
-// // Needed to render conect below the AppBar
-// const Wrapper = styled("div")(({ theme }, props) => {
-//   console.log(theme.mixins.toolbar);
-//   return {
-//     paddingTop: "56px",
-//     "@media (min-width:0px)": { "@media (min-width:0px)": { paddingTop: 48 } },
-//     "@media (min-width:600px)": { paddingTop: "56px" },
-//     "@media (min-width:900px)": { paddingTop: "84px" },
-//     "@media (min-width:1250px)": { paddingTop: "60px" },
-//     backgroundColor: props.isLightMode ? "white" : "black",
-//   };
-// });
 
 // Needed to render conect below the AppBar
 const Wrapper = styledSC.div`
@@ -349,7 +338,13 @@ export default function PrimarySearchAppBar(props) {
         <Routes>
           <Route
             path=""
-            element={<Movies mode={isLightMode} filterVal={userInput} />}
+            element={
+              <Movies
+                mode={isLightMode}
+                filterVal={userInput}
+                getTitle={props.getTitle}
+              />
+            }
           ></Route>
           <Route
             path="/tvshows"
