@@ -14,7 +14,7 @@ const useMoviesState = () => {
   const movieCall = async () => {
     const data = await axios.get(api);
     const results = data.data.results;
-    // console.log("Results", results);
+    // console.log("Movie Data", data);
     SetMoviesData(results);
   };
 

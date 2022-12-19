@@ -1,31 +1,33 @@
 import NavBar from "./components/NavBar";
-import Movies from "./components/Movies";
+import { StyledAppWrapper } from "./styles/styled_components/styles";
 import { useState } from "react";
-
+import { TrailerMovies } from "./trailers/TrailersMovies";
 const App = (props) => {
   // TODO: Extract into its own custom hook to keep code DRY
   const [isLightMode, setIsLightMode] = useState(true);
+  const [title, setTitle] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
+  const getTitle = (title) => {
+    console.log(title);
+    setTitle(title);
+    setShowModal(true);
+    return;
+  };
 
   const modeHandler = (mode) => {
     setIsLightMode(mode);
   };
 
   return (
-    <div
-      className="App"
-      style={{
-        //TODO: Change lignt mode to a . different color maybe a olive green or soft green
-        // this line is needed to cover screen when filtering
-        backgroundColor: !isLightMode && "#121212",
-        position: "absolute",
-        left: 0,
-        width: "100%",
-        height: "100%",
-      }}
-    >
-      <NavBar getMode={modeHandler} />
-      {/* <Movies></Movies> */}
-    </div>
+    <StyledAppWrapper>
+      <TrailerMovies
+        title={title}
+        showModal={[showModal, setShowModal]}
+        isLightMode={isLightMode}
+      />
+      <NavBar getMode={modeHandler} getTitle={getTitle} />
+    </StyledAppWrapper>
   );
 };
 
