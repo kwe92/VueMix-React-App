@@ -36,6 +36,14 @@ const StyledCardContentP2 = styled(StyledCardContentP)`
   margin-top: 1rem;
 `;
 
+const StyledUlStarsRow = styled.ul`
+  display: flex;
+  padding: 0rem 0rem 0rem 0.5rem;
+  margin: 0;
+  liststyle: none;
+  gap: 0.25rem;
+`;
+
 export {
   StyledCardContentImage,
   StyledCardContentInfo,
@@ -44,4 +52,5 @@ export {
   StyledCardContentRating,
   StyledCardContentP,
   StyledCardContentP2,
+  StyledUlStarsRow,
 };
