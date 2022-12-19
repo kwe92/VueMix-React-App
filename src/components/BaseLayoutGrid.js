@@ -7,24 +7,21 @@ import {
 } from "../styles/styled_components/styles";
 
 const BaseLayoutGrid = (props) => {
-  // console.log("From Base Layout", props.stateParams);
+  // destructure state and setState
   const [data, setDataState] = props.stateParams;
   let filteredData;
-  // console.log("Results From useMoviesState", data);
 
-  // If props.filterVal as a string evaluates to truthy
+  // If props.filterVal is not empty
   if (props.filterVal) {
-    filteredData = data.filter((ele) => {
-      return isMatchingTitle(ele, props.filterVal);
-    });
-    // console.log("Filtered objects", filteredData);
+    filteredData = data.filter((ele) =>
+      isMatchingTitle(ele.original_title, props.filterVal)
+    );
   } else {
     filteredData = data;
   }
 
+  // Create an array of elements wrapped in <li> tags
   const movieList = filteredData.map((ele) => {
-    // console.log("From BLG: ", data);
-    // console.log("From BLG Path: ", ele.backdrop_path);
     return (
       <div style={{ position: "relative" }} key={ele.original_title}>
         <li style={{ listStyleType: "none" }}>
@@ -42,8 +39,8 @@ const BaseLayoutGrid = (props) => {
               }
               isLightMode={props.mode}
               object={ele}
+              getTitle={props.getTitle}
             ></DetailCard>
-            {/* <StyledFaPlay /> */}
           </StyledWrapper>
         </li>
       </div>
@@ -51,7 +48,6 @@ const BaseLayoutGrid = (props) => {
   });
   return (
     <div>
-      {/* <h1>Movies</h1> */}
       <StyledUlCards>{movieList}</StyledUlCards>
     </div>
   );
