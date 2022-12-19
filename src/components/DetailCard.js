@@ -1,27 +1,17 @@
 import React from "react";
-import { StyledCard } from "../styles/styled_components/styles";
 import { AiFillStar } from "react-icons/ai";
-import {
-  StyledCardContentImage,
-  StyledCardContentInfo,
-  StyledCardContentTitle,
-  StyledCardContentDate,
-  StyledCardContentRating,
-  StyledCardContentP,
-  StyledCardContentP2,
-} from "../styles/styled_components/card_styles/cardStyles";
+import { round, round2 } from "./utils/round";
+import * as style from "../styles/styled_components/card_styles/cardStyles";
+import { StyledCard } from "../styles/styled_components/styles";
 
-// TODO: ul tag should be its own styled component
 // TODO: Look for inline css to refactor into styled components
 
 const DetailCard = (props) => {
   // Count of stars
   // example;
-  //    8.80 / 10 * 5 = 4.4 floored to the value of 4.0 for star cnt
+  //    8.80 / 10 * 5 = 4.4 rounded to the value of 4.0 for star cnt
   const getStarCnt = () =>
-    Math.floor((parseFloat(props.object.vote_average).toFixed(2) / 10) * 5);
-
-  const round2 = (num) => parseFloat(num).toFixed(2);
+    round((parseFloat(props.object.vote_average).toFixed(2) / 10) * 5);
 
   const cntStars = getStarCnt();
 
@@ -40,46 +30,42 @@ const DetailCard = (props) => {
   }
 
   return (
-    <StyledCard>
-      <StyledCardContentImage src={props.image} />
-      <StyledCardContentInfo>
-        <StyledCardContentTitle isLightMode={props.isLightMode}>
+    <StyledCard
+      // Clickable card
+      onClick={() => {
+        const title = props.object.original_title;
+        props.getTitle(title);
+      }}
+    >
+      <style.StyledCardContentImage src={props.image} />
+      <style.StyledCardContentInfo>
+        <style.StyledCardContentTitle isLightMode={props.isLightMode}>
           {props.object.original_title}
-        </StyledCardContentTitle>
-        <StyledCardContentDate isLightMode={props.isLightMode}>
+        </style.StyledCardContentTitle>
+        <style.StyledCardContentDate isLightMode={props.isLightMode}>
           {props.object.release_date}
-        </StyledCardContentDate>
-        <StyledCardContentRating>
-          <StyledCardContentP isLightMode={props.isLightMode}>
+        </style.StyledCardContentDate>
+        <style.StyledCardContentRating>
+          <style.StyledCardContentP isLightMode={props.isLightMode}>
             Rating:
-          </StyledCardContentP>
+          </style.StyledCardContentP>
 
-          <StyledCardContentP isLightMode={props.isLightMode}>
+          <style.StyledCardContentP isLightMode={props.isLightMode}>
             {round2(props.object.vote_average)}
-          </StyledCardContentP>
+          </style.StyledCardContentP>
           {/* Star list */}
-          <ul
-            style={{
-              display: "flex",
-              padding: "0rem 0rem 0rem 0.5rem",
-              margin: 0,
-              listStyle: "none",
-              gap: "0.25rem",
-            }}
-          >
-            {stars}
-          </ul>
-        </StyledCardContentRating>
-        <StyledCardContentP
+          <style.StyledUlStarsRow>{stars}</style.StyledUlStarsRow>
+        </style.StyledCardContentRating>
+        <style.StyledCardContentP
           isLightMode={props.isLightMode}
           style={{ paddingTop: "0.5rem" }}
         >
           Votes: {props.object.vote_count}
-        </StyledCardContentP>
-      </StyledCardContentInfo>
-      <StyledCardContentP2 isLightMode={props.isLightMode}>
+        </style.StyledCardContentP>
+      </style.StyledCardContentInfo>
+      <style.StyledCardContentP2 isLightMode={props.isLightMode}>
         {props.object.overview}
-      </StyledCardContentP2>
+      </style.StyledCardContentP2>
     </StyledCard>
   );
 };
