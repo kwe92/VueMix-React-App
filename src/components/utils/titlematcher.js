@@ -1,7 +1,8 @@
+// A utility function that returns as boolen value if one string is included in another
+
 export const isMatchingTitle = (ele, val) => {
-  // if the title is null return false
-  if (!ele.original_title) {
-    return false;
-  }
-  return ele.original_title.toLowerCase().includes(val.toLowerCase());
+  // if the string is empty return false
+  if (!ele) return false;
+
+  return ele.toLowerCase().includes(val.toLowerCase());
 };
