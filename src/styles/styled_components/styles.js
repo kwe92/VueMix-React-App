@@ -2,9 +2,9 @@ import { FaPlay } from "react-icons/fa";
 import styled from "styled-components";
 
 const StyledAppWrapper = styled.div`
-  //TODO: Change lignt mode to a . different color maybe a olive green or soft green
+  //TODO: Change light mode to a . different color maybe a olive green or soft green
   // this line is needed to cover screen when filtering
-  backgroundcolor: ${(props) => !props.isLightMode && "#121212"};
+  background: ${(props) => (props.mode ? "white" : "#121212")};
   position: absolute;
   left: 0;
   width: 100%;
@@ -46,6 +46,7 @@ const StyledUlCards = styled.ul`
   flex-wrap: wrap;
   justify-content: center;
   padding-left: 0px;
+  background: ${(props) => (props.mode ? "white" : "#121212")};
 `;
 
 const StyledCard = styled.div`
