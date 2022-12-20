@@ -8,6 +8,7 @@ const TvShows = (props) => {
       stateParams={[tvShows, setTvShowsState]}
       mode={props.mode}
       filterVal={props.filterVal}
+      getTitle={props.getTitle}
     ></BaseLayoutGrid>
   );
 };
