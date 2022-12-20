@@ -10,6 +10,7 @@ const Trends = (props) => {
       stateParams={[trendingData, setTrendingState]}
       mode={props.mode}
       filterVal={props.filterVal}
+      getTitle={props.getTitle}
     ></BaseLayoutGrid>
   );
 };
