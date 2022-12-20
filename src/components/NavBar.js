@@ -47,7 +47,6 @@ const Wrapper = styledSC.div`
   // @media (min-width: 600px): padding-top: 56px;
   // @media (min-width: 900px): {padding-top: 80px}
   // @media (min-width: 1250px): padding-top: 60px;
-  background-color: ${(props) => (props.isLightMode ? "white" : "#121212")};
 `;
 
 const Search = styled("div")(({ theme }) => ({
@@ -348,11 +347,23 @@ export default function PrimarySearchAppBar(props) {
           ></Route>
           <Route
             path="/tvshows"
-            element={<TvShows mode={isLightMode} filterVal={userInput} />}
+            element={
+              <TvShows
+                mode={isLightMode}
+                filterVal={userInput}
+                getTitle={props.getTitle}
+              />
+            }
           ></Route>
           <Route
             path="trending"
-            element={<Trends mode={isLightMode} filterVal={userInput} />}
+            element={
+              <Trends
+                mode={isLightMode}
+                filterVal={userInput}
+                getTitle={props.getTitle}
+              />
+            }
           ></Route>
           <Route
             path="/pricing"
