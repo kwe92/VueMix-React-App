@@ -4,7 +4,8 @@ import ReactPlayer from "react-player";
 import movieTrailer from "movie-trailer";
 import { VideoModal } from "../styles/video_modal/videoModalStyle";
 
-//TODO: Fix previous video state showing shortly before newstate is rendered
+// TODO: Handle errors due to no inital movie value and no trailer found along with any onther error caught by the browser
+// TODO: Fix previous video state showing shortly before newstate is rendered
 export const TrailerMovies = (props) => {
   const [video, setVideo] = useState();
   //https://youtu.be/sa9l-dTv9Gk
