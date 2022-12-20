@@ -47,8 +47,16 @@ const BaseLayoutGrid = (props) => {
     );
   });
   return (
-    <div>
-      <StyledUlCards>{movieList}</StyledUlCards>
+    // TODO: Should be its own styled component
+    <div
+      style={{
+        background: props.mode ? "white" : "#121212",
+        position: "absolute",
+        height: "100vh",
+        width: "100vw",
+      }}
+    >
+      <StyledUlCards mode={props.mode}>{movieList}</StyledUlCards>
     </div>
   );
 };
