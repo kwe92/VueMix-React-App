@@ -20,7 +20,7 @@ const App = (props) => {
   };
 
   return (
-    <StyledAppWrapper>
+    <StyledAppWrapper mode={isLightMode}>
       <TrailerMovies
         title={title}
         showModal={[showModal, setShowModal]}

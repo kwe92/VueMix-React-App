@@ -6,13 +6,30 @@ import { VideoModal } from "../styles/video_modal/videoModalStyle";
 
 //TODO: Fix previous video state showing shortly before newstate is rendered
 export const TrailerMovies = (props) => {
-  const [videoURL, setVideoURL] = useState(["https://youtu.be/sa9l-dTv9Gk"]);
+  const [video, setVideo] = useState();
+  //https://youtu.be/sa9l-dTv9Gk
+  const [videoURL, setVideoURL] = useState([""]);
   const [showModal, setShowModal] = props.showModal;
 
-  if (props.title)
+  if (props.title) {
     movieTrailer(props.title).then((res) => {
       setVideoURL(res);
     });
+  }
+
+  // const handleSearch = () => {
+  //   console.log("from handle search");
+  //   setVideo(props.title);
+  //   movieTrailer(props.title).then((res) => {
+  //     setVideoURL(res);
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   handleSearch();
+  // }, [video]);
+
+  console.log("from trailer movies", props.title);
 
   if (props.title) {
     return (
