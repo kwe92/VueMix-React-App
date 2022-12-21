@@ -48,16 +48,18 @@ const BaseLayoutGrid = (props) => {
   });
   return (
     // TODO: Should be its own styled component
-    <div
-      style={{
-        background: props.mode ? "white" : "#121212",
-        position: "absolute",
-        height: "100vh",
-        width: "100vw",
-      }}
-    >
-      <StyledUlCards mode={props.mode}>{movieList}</StyledUlCards>
-    </div>
+
+    // TODO: Remove this div?? What was it for?? | it made sense when i put it in
+    // <div
+    //   style={{
+    //     background: props.mode ? "white" : "#121212",
+    //     position: "absolute",
+    //     height: "100%",
+    //     width: "100%",
+    //   }}
+    // >
+    <StyledUlCards mode={props.mode}>{movieList}</StyledUlCards>
+    // </div>
   );
 };
 
