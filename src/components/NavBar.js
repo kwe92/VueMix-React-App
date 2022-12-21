@@ -67,7 +67,7 @@ const Search = styled("div")(({ theme }) => ({
 
 const BlueSwitch = styled(Switch)(({ theme }) => ({
   "& .MuiSwitch-switchBase.Mui-checked": {
-    color: blue[600],
+    color: "#1E88E5",
     "&:hover": {
       backgroundColor: alpha(blue[600], theme.palette.action.hoverOpacity),
     },
@@ -223,7 +223,13 @@ export default function PrimarySearchAppBar(props) {
               variant="h4"
               noWrap
               component="div"
-              sx={{ display: { xs: "none", sm: "block" } }}
+              sx={{
+                display: {
+                  xs: "none",
+                  sm: "block",
+                  // , color: "black"
+                },
+              }}
             >
               VueMix
             </Typography>
