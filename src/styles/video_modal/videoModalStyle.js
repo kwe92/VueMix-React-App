@@ -15,16 +15,18 @@ export const VideoModal = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-
 &.modal-content {
   background-color: ${(props) => (props.isLightMode ? "#fefefe" : "black")};
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  height: 60%;
-}
+  max-width:100%;
+  height: 80%;
+  max-height:100%;
+  border-radius: 20px;
 
+}
 
 & span {
   color: #aaaaaa;
@@ -34,8 +36,31 @@ export const VideoModal = styled.div`
 
 & span: hover,
 & span: focus {
-  color: #000;
+  color: ${(props) => (props.isLightMode ? "#000" : "white")};
   text-decoration: none;
   cursor: pointer;
 }
+`;
+
+export const ErrorWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const ErrorColor = styled.div`
+  color: ${(props) => !props.isLightMode && "white"};
+`;
+
+export const ErrorMessage = styled(ErrorColor)`
+  font-size: 8vw;
+  margin: 0;
+  margin-top: 1rem;
+`;
+
+export const ErrorTitle = styled(ErrorMessage)`
+  font-size: 4vw;
+  margin-top: 0rem;
 `;
