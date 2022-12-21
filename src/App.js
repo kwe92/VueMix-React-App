@@ -21,11 +21,13 @@ const App = (props) => {
 
   return (
     <StyledAppWrapper mode={isLightMode}>
-      <TrailerMovies
-        title={title}
-        showModal={[showModal, setShowModal]}
-        isLightMode={isLightMode}
-      />
+      {showModal && (
+        <TrailerMovies
+          title={title}
+          showModal={[showModal, setShowModal]}
+          isLightMode={isLightMode}
+        />
+      )}
       <NavBar getMode={modeHandler} getTitle={getTitle} />
     </StyledAppWrapper>
   );
