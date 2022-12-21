@@ -39,6 +39,7 @@ const StyledFaPlay = styled(FaPlay)`
   }
 `;
 
+// TODO: Need to fix top padding
 const StyledUlCards = styled.ul`
   display: flex;
   flex-direction: row;
@@ -47,14 +48,15 @@ const StyledUlCards = styled.ul`
   justify-content: center;
   padding-left: 0px;
   background: ${(props) => (props.mode ? "white" : "#121212")};
+  padding-top: 1rem;
 `;
 
 const StyledCard = styled.div`
   position: absolute;
   bottom: 0.20rem;
-  max-height: 42vw;
-  max-width: 30vw;
   height: 42vw;
+  max-height: 42vw;
+  width: 30vw;
   max-width: 30vw;
   box-shadow: 1px 1px 2px #888888;
   overflow: scroll;
