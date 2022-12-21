@@ -9,7 +9,6 @@ const useMoviesState = () => {
   const api = `https://api.themoviedb.org/3/discover/movie?api_key=${apikey}`;
   const [moviesData, SetMoviesData] = useState([]);
 
-  //TODO: Fix
   // Movies API call
   const movieCall = async () => {
     const data = await axios.get(api);
