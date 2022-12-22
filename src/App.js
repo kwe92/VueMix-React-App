@@ -4,7 +4,7 @@ import { useState } from "react";
 import { TrailerMovies } from "./trailers/TrailersMovies";
 const App = (props) => {
   // TODO: Extract into its own custom hook to keep code DRY
-  const [isLightMode, setIsLightMode] = useState(true);
+  const [isLightMode, setIsLightMode] = useState(false);
   const [title, setTitle] = useState("");
   const [showModal, setShowModal] = useState(false);
 
