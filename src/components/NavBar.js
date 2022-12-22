@@ -107,7 +107,7 @@ export default function PrimarySearchAppBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const [isLightMode, setIsLightMode] = React.useState(true);
+  const [isLightMode, setIsLightMode] = React.useState(false);
   const [userInput, setUserInput] = React.useState("");
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -295,7 +295,6 @@ export default function PrimarySearchAppBar(props) {
                 <FormControlLabel
                   control={
                     <BlueSwitch
-                      defaultChecked
                       onClick={() => {
                         setIsLightMode(!isLightMode);
                         props.getMode(!isLightMode);
