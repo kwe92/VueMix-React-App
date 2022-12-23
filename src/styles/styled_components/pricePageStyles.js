@@ -1,16 +1,23 @@
 import styled from "styled-components";
 
+// #121212
+
 export const SubscribeCard = styled.div`
-  background: ${(props) => (props.isLightMode ? "#1876d2" : "#121212")};
+  background: ${(props) =>
+    props.isLightMode ? "#1876d2" : "rgba(0, 0, 0, 0.85)"};
   display: flex;
+  // padding: 0rem 1rem;
   flex-direction: column;
   align-items: center;
   bottom: 0.2rem;
-  height: 42vw;
-  width: 30vw;
-  box-shadow: 0px 2px 4px #888888;
+  // height: 42vw;
+  // width: 30vw;
+  height: 100%;
+  width: auto;
+  box-shadow: 1px 2px 4px #888888;
   overflow: scroll;
   border-radius: 20px;
+  font-family: Roboto;
 
   & h1.header {
     color: white;
@@ -60,5 +67,5 @@ export const SubscribeContentWrapper = styled.div`
   justify-content: center;
   gap: 1rem;
   margin-top: 5rem;
-  padding: 0rem 0.5rem;
+  // padding: 0rem 0.5rem;
 `;
