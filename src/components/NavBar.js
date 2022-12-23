@@ -25,6 +25,7 @@ import Pricing from "../components/Pricing";
 import { Route, Routes, NavLink } from "react-router-dom";
 import { blue, red } from "@mui/material/colors";
 import TvShows from "./TvShows";
+import { useMode } from "../hooks/modeHook";
 
 // TODO: Add options to the left menu icon
 // TODO: Fix Dynamic height change of toolbar covering content
@@ -107,7 +108,7 @@ export default function PrimarySearchAppBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const [isLightMode, setIsLightMode] = React.useState(false);
+  const [isLightMode, setIsLightMode] = useMode(false);
   const [userInput, setUserInput] = React.useState("");
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
