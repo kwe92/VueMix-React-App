@@ -7,7 +7,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Typography } from "@mui/material";
 import * as styles from "../styles/styled_components/appBarStyles";
-
+import { useMode } from "../hooks/modeHook";
 const pages = [
   { label: "MOVIES", route: "" },
   { label: "TV SHOWS", route: "bigMind" },
@@ -23,7 +23,7 @@ const buttonLinks = pages.map((page) => {
 
 export const StyledAppBar = () => {
   const [userInput, setUserInput] = useState("");
-  const [isLightMode, setIsLightMode] = useState(false);
+  const [isLightMode, setIsLightMode] = useMode();
 
   const handleUserInput = (event) => {
     const input = event.target.value;
