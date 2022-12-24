@@ -1,10 +1,10 @@
 import { FaPlay } from "react-icons/fa";
 import styled from "styled-components";
 
+//TODO: Change light mode to a . different color maybe a olive green or soft green
+// cover screen when filtering
 const StyledAppWrapper = styled.div`
-  //TODO: Change light mode to a . different color maybe a olive green or soft green
-  // this line is needed to cover screen when filtering
-  background: ${(props) => (props.mode ? "white" : "#121212")};
+  // background: ${(props) => (props.isLightMode ? "white" : "#121212")};
   position: absolute;
   left: 0;
   width: 100%;
@@ -40,6 +40,8 @@ const StyledFaPlay = styled(FaPlay)`
 `;
 
 // TODO: Need to fix top padding
+// TODO: background can be taken care of with the body tag and vanilla JS
+
 const StyledUlCards = styled.ul`
   display: flex;
   flex-direction: row;
@@ -47,7 +49,7 @@ const StyledUlCards = styled.ul`
   flex-wrap: wrap;
   justify-content: center;
   padding-left: 0px;
-  background: ${(props) => (props.mode ? "white" : "#121212")};
+  // background: ${(props) => (props.isLightMode ? "white" : "#121212")};
   padding-top: 1rem;
 `;
 
@@ -58,16 +60,18 @@ const StyledCard = styled.div`
   max-height: 42vw;
   width: 30vw;
   max-width: 30vw;
-  box-shadow: 1px 1px 2px #888888;
+  box-shadow: 0.125rem 0.25rem 0.5rem #888888;
   overflow: scroll;
   border-radius: 20px;
-  // display: none;
   transition: opacity 1s ease-in-out;
   opacity: 0;
 
   ${StyledWrapper}:hover & {
-    // display: block;
   opacity: 1;
+`;
+
+const ContentWrapper = styled.div`
+  position: relative;
 `;
 
 export {
@@ -77,4 +81,5 @@ export {
   StyledUlCards,
   StyledCard,
   StyledAppWrapper,
+  ContentWrapper,
 };

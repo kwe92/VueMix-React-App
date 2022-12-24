@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 // #121212
-
+//rgba(0, 0, 0, 0.85)
 export const SubscribeCard = styled.div`
-  background: ${(props) =>
-    props.isLightMode ? "#1876d2" : "rgba(0, 0, 0, 0.85)"};
+  background: ${(props) => (props.isLightMode ? "#1876d2" : "#0A2647")};
   display: flex;
   // padding: 0rem 1rem;
   flex-direction: column;
@@ -14,7 +13,7 @@ export const SubscribeCard = styled.div`
   // width: 30vw;
   height: 100%;
   width: auto;
-  box-shadow: 1px 2px 4px #888888;
+  box-shadow: 0.125rem 0.25rem 0.5rem #888888;
   overflow: scroll;
   border-radius: 20px;
   font-family: Roboto;
@@ -30,7 +29,6 @@ export const SubscribeCard = styled.div`
     margin: 0;
   }
 
-  // need to make this responsive
   & button {
     color: ${(props) => (props.isLightMode ? "#1e88e5" : "black")};
   }
@@ -39,6 +37,8 @@ export const SubscribeCard = styled.div`
     padding: 0rem 0.5rem;
     font-size: 2vw;
     color: white;
+    display: flex;
+    flex-direction: column;
   }
 
   & span {
@@ -68,4 +68,11 @@ export const SubscribeContentWrapper = styled.div`
   gap: 1rem;
   margin-top: 5rem;
   // padding: 0rem 0.5rem;
+`;
+
+export const CardBlankCanvas = styled.div`
+  background: white;
+  border-radius: 20px;
+  width: 30vw;
+  height: 42vw;
 `;

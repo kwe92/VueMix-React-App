@@ -36,17 +36,17 @@ const StyledCardContentP = styled.p`
 `;
 
 const StyledCardContentP2 = styled(StyledCardContentP)`
-  padding: 0px 1rem 0.5rem;
+  padding: 0rem 1rem 0.5rem;
   margin-top: 1rem;
   font-family: Roboto;
 `;
 
 const StyledUlStarsRow = styled.ul`
   display: flex;
-  padding: 0rem 0rem 0rem 0.5rem;
+  padding: 0rem 0rem 0rem 0.25rem;
   margin: 0;
-  liststyle: none;
-  gap: 0.25rem;
+  list-style: none;
+  gap: 0.2rem;
 `;
 
 export {
