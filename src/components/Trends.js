@@ -7,8 +7,8 @@ const Trends = (props) => {
 
   return (
     <BaseLayoutGrid
-      stateParams={[trendingData, setTrendingState]}
-      mode={props.mode}
+      state={[trendingData, setTrendingState]}
+      isLightMode={props.isLightMode}
       filterVal={props.filterVal}
       getTitle={props.getTitle}
     ></BaseLayoutGrid>
