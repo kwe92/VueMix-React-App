@@ -345,7 +345,7 @@ export default function PrimarySearchAppBar(props) {
             path=""
             element={
               <Movies
-                mode={isLightMode}
+                isLightMode={isLightMode}
                 filterVal={userInput}
                 getTitle={props.getTitle}
               />
@@ -355,7 +355,7 @@ export default function PrimarySearchAppBar(props) {
             path="/tvshows"
             element={
               <TvShows
-                mode={isLightMode}
+                isLightMode={isLightMode}
                 filterVal={userInput}
                 getTitle={props.getTitle}
               />
@@ -365,7 +365,7 @@ export default function PrimarySearchAppBar(props) {
             path="trending"
             element={
               <Trends
-                mode={isLightMode}
+                isLightMode={isLightMode}
                 filterVal={userInput}
                 getTitle={props.getTitle}
               />
@@ -373,7 +373,7 @@ export default function PrimarySearchAppBar(props) {
           ></Route>
           <Route
             path="/pricing"
-            element={<Pricing mode={isLightMode} />}
+            element={<Pricing isLightMode={isLightMode} />}
           ></Route>
         </Routes>
       </Wrapper>
