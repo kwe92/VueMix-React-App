@@ -5,8 +5,8 @@ const TvShows = (props) => {
   const [tvShows, setTvShowsState] = useTvShowsState();
   return (
     <BaseLayoutGrid
-      stateParams={[tvShows, setTvShowsState]}
-      mode={props.mode}
+      state={[tvShows, setTvShowsState]}
+      isLightMode={props.isLightMode}
       filterVal={props.filterVal}
       getTitle={props.getTitle}
     ></BaseLayoutGrid>
