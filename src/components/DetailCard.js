@@ -1,6 +1,6 @@
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
-import { round, round2 } from "./utils/round";
+import { round } from "./utils/round";
 import * as style from "../styles/styled_components/cardStyles";
 import { StyledCard } from "../styles/styled_components/styles";
 
@@ -11,7 +11,7 @@ const DetailCard = (props) => {
   // example;
   //    8.80 / 10 * 5 = 4.4 rounded to the value of 4.0 for star cnt
   const getStarCnt = () =>
-    round((parseFloat(props.object.vote_average).toFixed(2) / 10) * 5);
+    round((parseFloat(props.object.vote_average).toFixed(2) / 10) * 5, 0);
 
   const cntStars = getStarCnt();
 
@@ -29,43 +29,57 @@ const DetailCard = (props) => {
     );
   }
 
+  // handles clicking the image or card
+  // calls getTitle callback passed from App.js
+  const handleClick = () => {
+    const title = props.object.original_title;
+    props.getTitle(title);
+  };
+
+  const CardImage = <style.StyledCardContentImage src={props.image} />;
+
+  const CardMiddleSection = (
+    <style.StyledCardContentInfo>
+      <style.StyledCardContentTitle isLightMode={props.isLightMode}>
+        {props.object.original_title}
+      </style.StyledCardContentTitle>
+      <style.StyledCardContentDate isLightMode={props.isLightMode}>
+        {props.object.release_date}
+      </style.StyledCardContentDate>
+      <style.StyledCardContentRating>
+        <style.StyledCardContentP isLightMode={props.isLightMode}>
+          Rating:
+        </style.StyledCardContentP>
+
+        <style.StyledCardContentP isLightMode={props.isLightMode}>
+          {round(props.object.vote_average, 2)}
+        </style.StyledCardContentP>
+        {/* Star list */}
+        <style.StyledUlStarsRow>{stars}</style.StyledUlStarsRow>
+      </style.StyledCardContentRating>
+      <style.StyledCardContentP
+        isLightMode={props.isLightMode}
+        style={{ paddingTop: "0.5rem" }}
+      >
+        Votes: {props.object.vote_count}
+      </style.StyledCardContentP>
+    </style.StyledCardContentInfo>
+  );
+
+  const CardText = (
+    <style.StyledCardContentP2 isLightMode={props.isLightMode}>
+      {props.object.overview}
+    </style.StyledCardContentP2>
+  );
+
   return (
     <StyledCard
       // Clickable card
-      onClick={() => {
-        const title = props.object.original_title;
-        props.getTitle(title);
-      }}
+      onClick={handleClick}
     >
-      <style.StyledCardContentImage src={props.image} />
-      <style.StyledCardContentInfo>
-        <style.StyledCardContentTitle isLightMode={props.isLightMode}>
-          {props.object.original_title}
-        </style.StyledCardContentTitle>
-        <style.StyledCardContentDate isLightMode={props.isLightMode}>
-          {props.object.release_date}
-        </style.StyledCardContentDate>
-        <style.StyledCardContentRating>
-          <style.StyledCardContentP isLightMode={props.isLightMode}>
-            Rating:
-          </style.StyledCardContentP>
-
-          <style.StyledCardContentP isLightMode={props.isLightMode}>
-            {round2(props.object.vote_average)}
-          </style.StyledCardContentP>
-          {/* Star list */}
-          <style.StyledUlStarsRow>{stars}</style.StyledUlStarsRow>
-        </style.StyledCardContentRating>
-        <style.StyledCardContentP
-          isLightMode={props.isLightMode}
-          style={{ paddingTop: "0.5rem" }}
-        >
-          Votes: {props.object.vote_count}
-        </style.StyledCardContentP>
-      </style.StyledCardContentInfo>
-      <style.StyledCardContentP2 isLightMode={props.isLightMode}>
-        {props.object.overview}
-      </style.StyledCardContentP2>
+      {CardImage}
+      {CardMiddleSection}
+      {CardText}
     </StyledCard>
   );
 };
