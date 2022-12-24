@@ -6,8 +6,8 @@ const Movies = (props) => {
   const [movies, setMoviesState] = useMoviesState();
   return (
     <BaseLayoutGrid
-      stateParams={[movies, setMoviesState]}
-      mode={props.mode}
+      state={[movies, setMoviesState]}
+      isLightMode={props.isLightMode}
       filterVal={props.filterVal}
       getTitle={props.getTitle}
     ></BaseLayoutGrid>
