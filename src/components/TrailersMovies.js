@@ -4,10 +4,6 @@ import ReactPlayer from "react-player";
 import movieTrailer from "movie-trailer";
 import * as style from "../styles/styled_components/videoModalStyle";
 import sadFace from "../assets/sadface_nbg.png";
-import styled from "styled-components";
-
-// TODO: Handle errors due to no inital movie value and no trailer found along with any onther error caught by the browser
-// TODO: Slim component down and get rid of duplicaet lazy code!
 
 export const TrailerMovies = (props) => {
   const [video, setVideo] = useState([]);
@@ -17,20 +13,38 @@ export const TrailerMovies = (props) => {
 
   useEffect(() => {
     setVideo(props.title);
-    movieTrailer(video).then((res) => {
-      setVideoURL(res);
-    });
+    movieTrailer(video).then((res) => setVideoURL(res));
   }, [video]);
 
   const handleModalClose = () => {
-    setVideoURL("");
+    setVideoURL([""]);
     setShowModal(false);
   };
 
-  const closeButton = (
-    <div onClick={handleModalClose}>
-      <span>&times;</span>
+  const CloseButton = <span onClick={handleModalClose}>&times;</span>;
+
+  const VideoPlayer = (
+    <div style={{ height: "90%" }} id={"player"}>
+      <ReactPlayer
+        url={videoURL}
+        controls={true}
+        width={"100%"}
+        height={"100%"}
+      />
     </div>
+  );
+
+  const ErrorMessage = (
+    <style.ErrorWrapper>
+      <style.ErrorMessage isLightMode={props.isLightMode}>
+        No Video Found
+      </style.ErrorMessage>
+      <style.ErrorTitle isLightMode={props.isLightMode}>
+        Title: {video}
+      </style.ErrorTitle>
+
+      <img src={sadFace} />
+    </style.ErrorWrapper>
   );
 
   console.log("from trailer movies", videoURL);
@@ -43,29 +57,13 @@ export const TrailerMovies = (props) => {
       >
         {videoURL ? (
           <>
-            {closeButton}
-            <div style={{ height: "90%" }} id={"player"}>
-              <ReactPlayer
-                url={videoURL}
-                controls={true}
-                width={"100%"}
-                height={"100%"}
-              />
-            </div>
+            {CloseButton}
+            {VideoPlayer}
           </>
         ) : (
           <>
-            {closeButton}
-            <style.ErrorWrapper>
-              <style.ErrorMessage isLightMode={props.isLightMode}>
-                No Video Found
-              </style.ErrorMessage>
-              <style.ErrorTitle isLightMode={props.isLightMode}>
-                Title: {video}
-              </style.ErrorTitle>
-
-              <img src={sadFace} />
-            </style.ErrorWrapper>
+            {CloseButton}
+            {ErrorMessage}
           </>
         )}
       </style.VideoModal>
