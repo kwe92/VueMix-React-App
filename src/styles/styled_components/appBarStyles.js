@@ -1,5 +1,8 @@
-import styled from "@emotion/styled";
+import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import { HiDotsVertical } from "react-icons/hi";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const borderRadius = 0.25;
 
@@ -20,14 +23,34 @@ export const AppBar = styled.div`
 export const StyledLogo = styled.div`
   white-space: nowrap;
   color: white;
-  font-size: 1.75rem;
+  padding-left: 2rem;
+  h4 {
+    text-size-adjust: 10%;
+    font-size: 2.15rem;
+  }
+
+  @media (max-width: 870px) {
+    flex-grow: 0.5;
+  }
+
+  @media (max-width: 650px) {
+    padding-left: 0rem;
+    padding-right: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const NavLinkContainer = styled.div`
   display: flex;
-  flex-grow: 1;
   gap: 2.5rem;
   padding-left: 2rem;
+  padding-right: 2rem;
+  @media (max-width: 870px) {
+    display: none;
+  }
 `;
 
 export const BaseStyledNavLink = styled(NavLink)`
@@ -37,17 +60,35 @@ export const BaseStyledNavLink = styled(NavLink)`
 `;
 
 export const StyledNavLink = styled(BaseStyledNavLink)`
+  // font-size: 0.75rem;
   font-size: 0.75rem;
+
+  @media (max-width: 720px) {
+    font-size: 0.5rem;
+  }
+
   &: hover {
     color: orange;
   }
 `;
 
 export const Wrapper = styled.div`
-  margin: 0rem 1rem 0rem 0rem;
+  margin: 0rem 0rem 0rem 0rem;
   position: relative;
   background: white;
+  flex-grow: 1;
   border-radius: ${borderRadius * 2 + "rem"};
+  width: 12rem;
+  @media (max-width: 870px) {
+    width: 12rem;
+  }
+  @media (max-width: 640px) {
+    width: 100%;
+  }
+
+  @media (max-width: 300px) {
+    width: 20%;
+  }
 `;
 export const StyledInputContainer = styled.div`
   position: relative;
@@ -56,7 +97,15 @@ export const StyledInputContainer = styled.div`
   gap: 0.5rem;
   border-radius: ${borderRadius + "rem"};
   align-items: center;
-  width: 16vw;
+
+  // @media (max-width: 950px) {
+  //   width: 100%;
+  // }
+
+  // @media (max-width: 640px) {
+  //   width: 100%;
+  // }
+
   background: rgb(38, 38, 38);
   caret-color: white;
   &: hover {
@@ -76,5 +125,53 @@ export const StyledInput = styled.input`
     border: none;
     // background: rgba(255, 0, 0, 0.1);
     outline: none;
+  }
+`;
+
+const baseIcon = css`
+  color: white;
+  font-size: 2rem;
+  flex-grow: 0.75;
+  padding-right: 1rem;
+  @media (max-width: 325px) {
+    padding-left: 1rem;
+  }
+
+  @media (max-width: 450px) {
+    padding-right: 0rem;
+  }
+`;
+
+export const StyledAccountCircle = styled(AccountCircle)`
+  ${baseIcon}
+`;
+
+export const StyledHiDotsVertical = styled(HiDotsVertical)`
+  ${baseIcon}
+`;
+
+export const GiHamburgerMenuWrapper = styled.div`
+  display: none;
+  @media (max-width: 870px) {
+    padding-left: 1rem;
+    display: inline;
+  }
+  @media (max-width: 450px) {
+    padding-left: 0.5rem;
+  }
+`;
+export const StyledGiHamburgerMenu = styled(GiHamburgerMenu)`
+  color: white;
+  font-size: 2rem;
+
+  @media (max-width: 350px) {
+    font-size: 1.5rem;
+  }
+`;
+
+export const SwitchWrapper = styled.div`
+  padding-left: 2rem;
+  @media (max-width: 450px) {
+    display: none;
   }
 `;
