@@ -1,3 +1,5 @@
 ## VueMix
 
-A movie trailer app.
+https://kwe92.github.io/VueMix-React-App/
+
+A Movie Trailer React App.
