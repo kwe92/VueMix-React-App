@@ -1,7 +1,7 @@
 {
   "name": "vue-mix",
   "version": "0.1.0",
-  "homepage": "https://kwe92.github.io/VueMix-React-app",
+  "homepage": "https://kwe92.github.io/vuemix-react-app",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
