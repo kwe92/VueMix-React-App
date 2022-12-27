@@ -4,7 +4,28 @@ import styled from "styled-components";
 const StyledCardContentImage = styled.img`
   height: 18vw;
   width: 30vw;
+
+  @media (max-width: 800px) {
+    width: 18rem;
+    height: 12rem;
+  }
+
+  @media (max-width: 450px) {
+    height: 8rem;
+    width: 12rem;
+  }
+
+  @media (max-width: 400px) {
+    height: 12rem;
+    width: 18rem;
+  }
+
+  @media (max-width: 300px) {
+    height: 10rem;
+    width: 16rem;
+  }
 `;
+
 const StyledCardContentInfo = styled.div`
   padding: 0rem 1rem;
   text-align: center;
