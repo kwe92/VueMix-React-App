@@ -79,7 +79,7 @@ const StyledCard = styled.div`
   height: 42vw;
   width: 30vw;
   box-shadow: 0.125rem 0.25rem 0.5rem #888888;
-  overflow: scroll;
+  overflow: hidden;
   border-radius: 20px;
   transition: opacity 1s ease-in-out;
   opacity: 0;

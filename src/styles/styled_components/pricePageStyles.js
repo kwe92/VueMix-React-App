@@ -12,7 +12,7 @@ export const SubscribeCard = styled.div`
   height: 100%;
   width: auto;
   box-shadow: 0.125rem 0.25rem 0.5rem #888888;
-  overflow: scroll;
+  overflow: hidden;
   border-radius: 20px;
   font-family: Roboto;
 
