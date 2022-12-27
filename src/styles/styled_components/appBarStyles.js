@@ -5,7 +5,7 @@ import { HiDotsVertical } from "react-icons/hi";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const borderRadius = 0.25;
-
+// TODO: Maybe add the light mode back in
 export const AppBar = styled.div`
   height: 56px;
   background-color: black;
@@ -17,7 +17,7 @@ export const AppBar = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  box-shadow: 1px 2px 4px grey;
+  box-shadow: 1px 2px 4px #121212;
 `;
 
 export const StyledLogo = styled.div`
@@ -117,6 +117,7 @@ export const StyledInput = styled.input`
   border: none;
   border-radius: 2px;
   display: block;
+  color: white;
   background: transparent;
   // padding: 0.5rem 0.5rem 0.5rem 0rem;
   padding: 6px 6px 6px 0px;
