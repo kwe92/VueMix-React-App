@@ -1,9 +1,16 @@
-import NavBar from "./components/NavBar";
+import NavBar from "./arch/NavBar_arch";
 import { StyledAppWrapper } from "./styles/styled_components/styles";
 import { useEffect, useState } from "react";
 import { TrailerMovies } from "./components/TrailersMovies";
+import Movies from "./components/Movies";
+import Trends from "./components/Trends";
+import TvShows from "./components/TvShows";
+import Pricing from "./components/Pricing";
 import { useMode } from "./hooks/modeHook";
 import { color } from "@mui/system";
+import { AppBar } from "./components/AppBar";
+import { Route, Routes } from "react-router-dom";
+
 const App = (props) => {
   // TODO: Extract into its own custom hook to keep code DRY
   // TODO: Finish custom app bar
@@ -13,6 +20,7 @@ const App = (props) => {
 
   const [isLightMode, setIsLightMode] = useMode();
   const [title, setTitle] = useState("");
+  const [userInput, setUserInput] = useState("");
   const [showModal, setShowModal] = useState(false);
 
   const setBodyBgColor = (color) =>
@@ -33,16 +41,56 @@ const App = (props) => {
   const modeHandler = (mode) => setIsLightMode(mode);
 
   return (
-    <StyledAppWrapper isLightMode={isLightMode}>
-      {showModal && (
-        <TrailerMovies
-          title={title}
-          showModal={[showModal, setShowModal]}
-          isLightMode={isLightMode}
-        />
-      )}
-      <NavBar getMode={modeHandler} getTitle={getTitle} />
-    </StyledAppWrapper>
+    <>
+      <AppBar input={[userInput, setUserInput]} />
+      <StyledAppWrapper isLightMode={isLightMode}>
+        {showModal && (
+          <TrailerMovies
+            title={title}
+            showModal={[showModal, setShowModal]}
+            isLightMode={isLightMode}
+          />
+        )}
+        {/* <NavBar getMode={modeHandler} getTitle={getTitle} /> */}
+
+        <Routes>
+          <Route
+            path=""
+            element={
+              <Movies
+                isLightMode={isLightMode}
+                filterVal={userInput}
+                getTitle={getTitle}
+              />
+            }
+          ></Route>
+          <Route
+            path="/tvshows"
+            element={
+              <TvShows
+                isLightMode={isLightMode}
+                filterVal={userInput}
+                getTitle={getTitle}
+              />
+            }
+          ></Route>
+          <Route
+            path="trending"
+            element={
+              <Trends
+                isLightMode={isLightMode}
+                filterVal={userInput}
+                getTitle={getTitle}
+              />
+            }
+          ></Route>
+          <Route
+            path="/pricing"
+            element={<Pricing isLightMode={isLightMode} />}
+          ></Route>
+        </Routes>
+      </StyledAppWrapper>
+    </>
   );
 };
 

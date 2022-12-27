@@ -5,10 +5,9 @@ import styled from "styled-components";
 // cover screen when filtering
 const StyledAppWrapper = styled.div`
   // background: ${(props) => (props.isLightMode ? "white" : "#121212")};
-  position: absolute;
-  left: 0;
   width: 100%;
   height: 100%;
+  padding-top: 2rem;
 `;
 const StyledWrapper = styled.div`
   display: inline;
@@ -23,6 +22,27 @@ const StyledImageDisappear = styled.img`
   height: 42vw;
   border-radius: 20px;
   transition: opacity 1s ease-in-out;
+
+  @media (max-width: 800px) {
+    width: 18rem;
+    height: 26rem;
+  }
+
+  @media (max-width: 450px) {
+    width: 12rem;
+    height: 16rem;
+  }
+
+  @media (max-width: 400px) {
+    width: 18rem;
+    height: 24rem;
+  }
+
+  @media (max-width: 300px) {
+    width: 16rem;
+    height: 22rem;
+  }
+
   ${StyledWrapper}:hover & {
     opacity: 0;
   }
@@ -57,15 +77,36 @@ const StyledCard = styled.div`
   position: absolute;
   bottom: 0.20rem;
   height: 42vw;
-  max-height: 42vw;
   width: 30vw;
-  max-width: 30vw;
   box-shadow: 0.125rem 0.25rem 0.5rem #888888;
   overflow: scroll;
   border-radius: 20px;
   transition: opacity 1s ease-in-out;
   opacity: 0;
 
+  @media (max-width: 800px) {
+    width: 18rem;
+    height: 26rem;
+  }
+
+
+  @media (max-width: 450px) {
+    width: 12rem;
+    height: 16rem;
+  }
+
+
+  @media (max-width: 400px) {
+    width: 18rem;
+    height: 24rem;
+  }
+
+
+  @media (max-width: 300px) {
+    width: 16rem;
+    height: 22rem;
+  }
+  
   ${StyledWrapper}:hover & {
   opacity: 1;
 `;
