@@ -9,8 +9,6 @@ export const SubscribeCard = styled.div`
   flex-direction: column;
   align-items: center;
   bottom: 0.2rem;
-  // height: 42vw;
-  // width: 30vw;
   height: 100%;
   width: auto;
   box-shadow: 0.125rem 0.25rem 0.5rem #888888;
@@ -21,12 +19,20 @@ export const SubscribeCard = styled.div`
   & h1.header {
     color: white;
     font-size: 4vw;
+
+    @media (max-width: 450px) {
+      font-size: 1.75rem;
+    }
   }
 
   & p.price {
     color: orange;
     font-size: 3vw;
     margin: 0;
+
+    @media (max-width: 450px) {
+      font-size: 2rem;
+    }
   }
 
   & button {
@@ -39,17 +45,25 @@ export const SubscribeCard = styled.div`
     color: white;
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 450px) {
+      font-size: 1.25rem;
+    }
   }
 
   & span {
     font-size: 1.5vw;
     color: white;
+
+    @media (max-width: 450px) {
+      font-size: 1.25rem;
+    }
   }
 `;
 
 export const SubscribeButton = styled.button`
   position: absolute;
-  top: 85%;
+  top: 87.5%;
   border-radius: 20px;
   width: 20vw;
   height: 4vh;
@@ -58,11 +72,16 @@ export const SubscribeButton = styled.button`
     background: orange;
     color: white;
   }
+
+  @media (max-width: 800px) {
+    display: none;
+  }
 `;
 
 export const SubscribeContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   position: relative;
   justify-content: center;
   gap: 1rem;
@@ -75,4 +94,9 @@ export const CardBlankCanvas = styled.div`
   border-radius: 20px;
   width: 30vw;
   height: 42vw;
+
+  @media (max-width: 450px) {
+    width: 16rem;
+    height: 22rem;
+  }
 `;
