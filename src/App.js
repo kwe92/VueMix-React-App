@@ -1,14 +1,14 @@
 import NavBar from "./arch/NavBar_arch";
 import { StyledAppWrapper } from "./styles/styled_components/styles";
 import { useEffect, useState } from "react";
-import { TrailerMovies } from "./components/TrailersMovies";
-import Movies from "./components/Movies";
-import Trends from "./components/Trends";
-import TvShows from "./components/TvShows";
-import Pricing from "./components/Pricing";
+import { TrailerMovies } from "./components/trailers/TrailersMovies";
+import Movies from "./components/movies/Movies";
+import Trends from "./components/trends/Trends";
+import TvShows from "./components/tvshows/TvShows";
+import Pricing from "./components/pricing/Pricing";
 import { useMode } from "./hooks/modeHook";
 import { color } from "@mui/system";
-import { AppBar } from "./components/AppBar";
+import { AppBar } from "./components/appbar/AppBar";
 import { Route, Routes } from "react-router-dom";
 
 const App = (props) => {
@@ -17,6 +17,10 @@ const App = (props) => {
   // TODO: Create a soruce of truth theme file
   // TODO: Add sign in page for google auth
   // TODO: Add Trending dropdown?
+
+  //TODO: add index.css to have a base styling
+  //TODO: Fix the navbar so that it is not absolute as there is no need to be
+  //TODO: Refactor the navbar to look better and bee more user friendly
 
   const [isLightMode, setIsLightMode] = useMode();
   const [title, setTitle] = useState("");

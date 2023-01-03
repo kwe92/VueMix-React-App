@@ -1,5 +1,5 @@
-import { useTvShowsState } from "../hooks/apiStateHooks";
-import BaseLayoutGrid from "./BaseLayoutGrid";
+import { useTvShowsState } from "../../hooks/apiStateHooks";
+import BaseLayoutGrid from "../base/BaseLayoutGrid";
 
 const TvShows = (props) => {
   const [tvShows, setTvShowsState] = useTvShowsState();

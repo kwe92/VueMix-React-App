@@ -1,6 +1,6 @@
 import React from "react";
-import { packages, bundles } from "../constants/packageData";
-import * as style from "../styles/styled_components/pricePageStyles";
+import { packages, bundles } from "../../constants/packageData";
+import * as style from "../../styles/styled_components/pricePageStyles";
 // Nested arrays
 const wrappedPackages = packages.map((subType) =>
   subType.map((type) => <li key={type.replaceAll(" ", "")}>{type}</li>)

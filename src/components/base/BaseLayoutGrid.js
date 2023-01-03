@@ -1,12 +1,12 @@
-import DetailCard from "./DetailCard";
-import { isMatchingTitle } from "./utils/titlematcher";
+import DetailCard from "../detail_card/DetailCard";
+import { isMatchingTitle } from "../utils/titlematcher";
 import {
   StyledWrapper,
   StyledImageDisappear,
   StyledUlCards,
   ContentWrapper,
-} from "../styles/styled_components/styles";
-import { CustomElements } from "../constants/CustomElements";
+} from "../../styles/styled_components/styles";
+import { CustomElements } from "../../constants/CustomElements";
 
 const BaseLayoutGrid = (props) => {
   // destructure state and setState

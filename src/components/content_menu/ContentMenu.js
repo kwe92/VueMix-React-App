@@ -2,7 +2,7 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { BaseStyledNavLink } from "../styles/styled_components/appBarStyles";
+import { BaseStyledNavLink } from "../../styles/styled_components/appBarStyles";
 
 export const ContentMenu = ({ icon, navObject }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);

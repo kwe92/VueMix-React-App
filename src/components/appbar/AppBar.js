@@ -4,10 +4,10 @@ import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { Typography } from "@mui/material";
-import AccountMenu from "./AccountMenu";
-import { ContentMenu } from "./ContentMenu";
-import { useMode } from "../hooks/modeHook";
-import * as styles from "../styles/styled_components/appBarStyles";
+import AccountMenu from "../account_menu/AccountMenu";
+import { ContentMenu } from "../content_menu/ContentMenu";
+import { useMode } from "../../hooks/modeHook";
+import * as styles from "../../styles/styled_components/appBarStyles";
 
 export const AppBar = ({ getMode, input }) => {
   const accountCircleIcon = (

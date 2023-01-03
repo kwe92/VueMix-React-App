@@ -1,6 +1,6 @@
 import React from "react";
-import useMoviesState from "../hooks/apiStateHooks";
-import BaseLayoutGrid from "./BaseLayoutGrid";
+import useMoviesState from "../../hooks/apiStateHooks";
+import BaseLayoutGrid from "../base/BaseLayoutGrid";
 
 const Movies = (props) => {
   const [movies, setMoviesState] = useMoviesState();

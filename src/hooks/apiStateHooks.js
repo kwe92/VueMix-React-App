@@ -16,11 +16,6 @@ const useMoviesState = () => {
     // console.log("Movie Data", data);
     SetMoviesData(results);
   };
-
-  const getMovies = () => {
-    movieCall();
-  };
-
   const result = moviesData.map((movie) =>
     dataModel(
       movie.original_title,
@@ -32,6 +27,10 @@ const useMoviesState = () => {
       movie.backdrop_path
     )
   );
+
+  const getMovies = () => {
+    movieCall();
+  };
 
   useEffect(getMovies, []);
   //todo: add secondary poster
@@ -50,10 +49,6 @@ const useTvShowsState = () => {
     SetTvShowsData(results);
   };
 
-  const getTvShow = () => {
-    tvShow();
-  };
-
   const result = tvShowsData.map((tvshow) =>
     dataModel(
       tvshow.original_name,
@@ -65,6 +60,10 @@ const useTvShowsState = () => {
       tvshow.backdrop_path
     )
   );
+
+  const getTvShow = () => {
+    tvShow();
+  };
 
   useEffect(getTvShow, []);
   return [result, SetTvShowsData];
@@ -83,10 +82,6 @@ const useTrendingState = () => {
     setTrendingDataState(results);
   };
 
-  const getTrending = () => {
-    trending();
-  };
-
   const result = trendingData.map((trending) =>
     dataModel(
       trending.original_title,
@@ -98,6 +93,10 @@ const useTrendingState = () => {
       trending.backdrop_path
     )
   );
+
+  const getTrending = () => {
+    trending();
+  };
 
   useEffect(getTrending, []);
   return [result, setTrendingDataState];

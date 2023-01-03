@@ -1,6 +1,6 @@
 import React from "react";
-import { useTrendingState } from "../hooks/apiStateHooks";
-import BaseLayoutGrid from "./BaseLayoutGrid";
+import { useTrendingState } from "../../hooks/apiStateHooks";
+import BaseLayoutGrid from "../base/BaseLayoutGrid";
 
 const Trends = (props) => {
   const [trendingData, setTrendingState] = useTrendingState();
