@@ -1,5 +1,5 @@
 import NavBar from "./arch/NavBar_arch";
-import { StyledAppWrapper } from "./styles/styled_components/styles";
+import { StyledAppWrapper } from "./AppStyles";
 import { useEffect, useState } from "react";
 import { TrailerMovies } from "./components/trailers/TrailersMovies";
 import Movies from "./components/movies/Movies";

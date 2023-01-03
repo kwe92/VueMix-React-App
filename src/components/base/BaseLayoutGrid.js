@@ -5,7 +5,7 @@ import {
   StyledImageDisappear,
   StyledUlCards,
   ContentWrapper,
-} from "../../styles/styled_components/styles";
+} from "../../styles/styles";
 import { CustomElements } from "../../constants/CustomElements";
 
 const BaseLayoutGrid = (props) => {

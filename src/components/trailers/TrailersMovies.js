@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import ReactPlayer from "react-player";
 import movieTrailer from "movie-trailer";
-import * as style from "../../styles/styled_components/videoModalStyle";
+import * as style from "./TrailerMoviesStyles";
 import sadFace from "../../assets/sadface_nbg.png";
 
 export const TrailerMovies = (props) => {

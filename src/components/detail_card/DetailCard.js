@@ -1,8 +1,8 @@
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
 import { round } from "../utils/round";
-import * as style from "../../styles/styled_components/cardStyles";
-import { StyledCard } from "../../styles/styled_components/styles";
+import * as style from "./DetailCardStyles";
+import { StyledCard } from "../../styles/styles";
 
 // TODO: Look for inline css to refactor into styled components
 

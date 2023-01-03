@@ -1,14 +1,6 @@
 import { FaPlay } from "react-icons/fa";
 import styled from "styled-components";
 
-//TODO: Change light mode to a . different color maybe a olive green or soft green
-// cover screen when filtering
-const StyledAppWrapper = styled.div`
-  // background: ${(props) => (props.isLightMode ? "white" : "#121212")};
-  width: 100%;
-  height: 100%;
-  padding-top: 2rem;
-`;
 const StyledWrapper = styled.div`
   display: inline;
   padding: 0;
@@ -89,24 +81,21 @@ const StyledCard = styled.div`
     height: 26rem;
   }
 
-
   @media (max-width: 450px) {
     width: 12rem;
     height: 16rem;
   }
-
 
   @media (max-width: 400px) {
     width: 18rem;
     height: 24rem;
   }
 
-
   @media (max-width: 300px) {
     width: 16rem;
     height: 22rem;
   }
-  
+
   ${StyledWrapper}:hover & {
   opacity: 1;
 `;
@@ -121,6 +110,5 @@ export {
   StyledFaPlay,
   StyledUlCards,
   StyledCard,
-  StyledAppWrapper,
   ContentWrapper,
 };
