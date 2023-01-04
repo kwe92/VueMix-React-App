@@ -49,6 +49,7 @@ export const StyledInput = styled.input`
 `;
 
 export const Wrapper = styled.div`
+  padding-top: 1rem;
   position: relative;
 
   border-radius: ${borderRadius * 2 + "rem"};
