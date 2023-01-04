@@ -1,11 +1,14 @@
 {
   "files": {
-    "main.js": "/VueMix-React-App/static/js/main.d8b26376.js",
+    "main.css": "/VueMix-React-App/static/css/main.a240c550.css",
+    "main.js": "/VueMix-React-App/static/js/main.67bc949b.js",
     "static/media/sadface_nbg.png": "/VueMix-React-App/static/media/sadface_nbg.2fca20397af3192caaf0.png",
     "index.html": "/VueMix-React-App/index.html",
-    "main.d8b26376.js.map": "/VueMix-React-App/static/js/main.d8b26376.js.map"
+    "main.a240c550.css.map": "/VueMix-React-App/static/css/main.a240c550.css.map",
+    "main.67bc949b.js.map": "/VueMix-React-App/static/js/main.67bc949b.js.map"
   },
   "entrypoints": [
-    "static/js/main.d8b26376.js"
+    "static/css/main.a240c550.css",
+    "static/js/main.67bc949b.js"
   ]
 }
