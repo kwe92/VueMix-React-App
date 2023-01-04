@@ -9,20 +9,14 @@ import { ContentMenu } from "../content_menu/ContentMenu";
 import { useMode } from "../../hooks/modeHook";
 import * as styles from "./AppBarStyles";
 
-export const AppBar = ({ getMode, input }) => {
+export const AppBar = ({ getMode }) => {
   const accountCircleIcon = (
     <AccountMenu icon={<styles.StyledAccountCircle />} />
   );
   const accountDotIcon = <AccountMenu icon={<styles.StyledHiDotsVertical />} />;
 
-  const [userInput, setUserInput] = input;
   const [accountIcon, setAccountIcon] = useState([accountCircleIcon]);
   const [isLightMode, setIsLightMode] = useMode(false);
-
-  const handleUserInput = (event) => {
-    const input = event.target.value;
-    setUserInput(input);
-  };
 
   const pages = [
     { label: "MOVIES", route: "" },
@@ -55,21 +49,21 @@ export const AppBar = ({ getMode, input }) => {
     <styles.NavLinkContainer>{buttonLinks}</styles.NavLinkContainer>
   );
 
-  const InputContainer = (
-    <styles.Wrapper>
-      <styles.StyledInputContainer>
-        <AiOutlineSearch
-          style={{ paddingLeft: "0.5rem", color: "white" }}
-        ></AiOutlineSearch>
-        <styles.StyledInput
-          placeholder="Search…"
-          inputProps={{ "aria-label": "search" }}
-          onChange={handleUserInput}
-          value={userInput}
-        ></styles.StyledInput>
-      </styles.StyledInputContainer>
-    </styles.Wrapper>
-  );
+  // const InputContainer = (
+  //   <styles.Wrapper>
+  //     <styles.StyledInputContainer>
+  //       <AiOutlineSearch
+  //         style={{ paddingLeft: "0.5rem", color: "white" }}
+  //       ></AiOutlineSearch>
+  //       <styles.StyledInput
+  //         placeholder="Search…"
+  //         inputProps={{ "aria-label": "search" }}
+  //         onChange={handleUserInput}
+  //         value={userInput}
+  //       ></styles.StyledInput>
+  //     </styles.StyledInputContainer>
+  //   </styles.Wrapper>
+  // );
 
   const CustomSwitch = (
     <styles.SwitchWrapper>
@@ -109,17 +103,15 @@ export const AppBar = ({ getMode, input }) => {
 
   return (
     <styles.AppBar isLightMode={isLightMode}>
-      {Menu}
       {/* Logo Start */}
       {Logo}
-      {/* NavLinks Start */}
-      {Links}
-      {/* Search Icon && Input Start */}
-      {InputContainer}
-      {/* Switch Start */}
-      {CustomSwitch}
-      {/* Account Circle */}
-      {accountIcon}
+      {Menu}
+      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+        {/* NavLinks Start */}
+        {Links}
+        {/* Account Circle */}
+        {accountIcon}
+      </div>
     </styles.AppBar>
   );
 };

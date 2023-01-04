@@ -10,6 +10,7 @@ import { useMode } from "./hooks/modeHook";
 import { color } from "@mui/system";
 import { AppBar } from "./components/appbar/AppBar";
 import { Route, Routes } from "react-router-dom";
+import { SearchBar } from "./components/search_bar/SearchBar";
 
 const App = (props) => {
   // TODO: Extract into its own custom hook to keep code DRY
@@ -46,8 +47,9 @@ const App = (props) => {
 
   return (
     <>
-      <AppBar input={[userInput, setUserInput]} />
+      <AppBar />
       <StyledAppWrapper isLightMode={isLightMode}>
+        <SearchBar input={[userInput, setUserInput]} />
         {showModal && (
           <TrailerMovies
             title={title}

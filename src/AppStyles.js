@@ -4,7 +4,14 @@ import styled from "styled-components";
 // cover screen when filtering
 export const StyledAppWrapper = styled.div`
   // background: ${(props) => (props.isLightMode ? "white" : "#121212")};
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
   width: 100%;
+
   height: 100%;
-  padding-top: 2rem;
 `;
