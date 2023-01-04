@@ -67,13 +67,21 @@ const StyledUlCards = styled.ul`
 
 const StyledCard = styled.div`
   position: absolute;
+
   bottom: 0.20rem;
+
   height: 42vw;
+
   width: 30vw;
+
   box-shadow: 0.125rem 0.25rem 0.5rem #888888;
-  overflow: hidden;
+
+  overflow: scroll;
+
   border-radius: 20px;
+
   transition: opacity 1s ease-in-out;
+
   opacity: 0;
 
   @media (max-width: 800px) {

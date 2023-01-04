@@ -58,7 +58,9 @@ const StyledCardContentP = styled.p`
 
 const StyledCardContentP2 = styled(StyledCardContentP)`
   padding: 0rem 1rem 0.5rem;
+
   margin-top: 1rem;
+
   font-family: Roboto;
 `;
 
