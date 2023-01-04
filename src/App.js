@@ -1,4 +1,3 @@
-import NavBar from "./arch/NavBar_arch";
 import { StyledAppWrapper } from "./AppStyles";
 import { useEffect, useState } from "react";
 import { TrailerMovies } from "./components/trailers/TrailersMovies";
@@ -7,9 +6,8 @@ import Trends from "./components/trends/Trends";
 import TvShows from "./components/tvshows/TvShows";
 import Pricing from "./components/pricing/Pricing";
 import { useMode } from "./hooks/modeHook";
-import { color } from "@mui/system";
 import { AppBar } from "./components/appbar/AppBar";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { SearchBar } from "./components/search_bar/SearchBar";
 
 const App = (props) => {
@@ -27,9 +25,15 @@ const App = (props) => {
   const [title, setTitle] = useState("");
   const [userInput, setUserInput] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const navigator = useNavigate();
 
   const setBodyBgColor = (color) =>
     (document.body.style.backgroundColor = color);
+
+  // load inital page
+  useEffect(() => {
+    navigator("/");
+  }, []);
 
   // Use Vanilla JavaScript to change the color of the body to match the background
   useEffect(() => {
@@ -57,11 +61,12 @@ const App = (props) => {
             isLightMode={isLightMode}
           />
         )}
+
         {/* <NavBar getMode={modeHandler} getTitle={getTitle} /> */}
 
         <Routes>
           <Route
-            path=""
+            path="/"
             element={
               <Movies
                 isLightMode={isLightMode}

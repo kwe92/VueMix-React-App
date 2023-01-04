@@ -17,15 +17,15 @@ const useMoviesState = () => {
     SetMoviesData(results);
   };
   const result = moviesData.map((movie) =>
-    dataModel(
-      movie.original_title,
-      movie.overview,
-      movie.release_date,
-      movie.vote_average,
-      movie.vote_count,
-      movie.poster_path,
-      movie.backdrop_path
-    )
+    dataModel({
+      title: movie.original_title,
+      overview: movie.overview,
+      date: movie.release_date,
+      rating: movie.vote_average,
+      votes: movie.vote_count,
+      img: movie.poster_path,
+      bdimg: movie.backdrop_path,
+    })
   );
 
   const getMovies = () => {
@@ -33,7 +33,6 @@ const useMoviesState = () => {
   };
 
   useEffect(getMovies, []);
-  //todo: add secondary poster
   return [result, SetMoviesData];
 };
 
@@ -50,15 +49,15 @@ const useTvShowsState = () => {
   };
 
   const result = tvShowsData.map((tvshow) =>
-    dataModel(
-      tvshow.original_name,
-      tvshow.overview,
-      tvshow.first_air_date,
-      tvshow.vote_average,
-      tvshow.vote_count,
-      tvshow.poster_path,
-      tvshow.backdrop_path
-    )
+    dataModel({
+      title: tvshow.original_name,
+      overview: tvshow.overview,
+      date: tvshow.first_air_date,
+      rating: tvshow.vote_average,
+      votes: tvshow.vote_count,
+      img: tvshow.poster_path,
+      bdimg: tvshow.backdrop_path,
+    })
   );
 
   const getTvShow = () => {
@@ -83,15 +82,15 @@ const useTrendingState = () => {
   };
 
   const result = trendingData.map((trending) =>
-    dataModel(
-      trending.original_title,
-      trending.overview,
-      trending.release_date,
-      trending.vote_average,
-      trending.vote_count,
-      trending.poster_path,
-      trending.backdrop_path
-    )
+    dataModel({
+      title: trending.original_title,
+      overview: trending.overview,
+      date: trending.release_date,
+      rating: trending.vote_average,
+      votes: trending.vote_count,
+      img: trending.poster_path,
+      bdimg: trending.backdrop_path,
+    })
   );
 
   const getTrending = () => {

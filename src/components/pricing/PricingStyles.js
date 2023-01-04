@@ -4,16 +4,27 @@ import styled from "styled-components";
 //rgba(0, 0, 0, 0.85)
 export const SubscribeCard = styled.div`
   background: ${(props) => (props.isLightMode ? "#1876d2" : "#0A2647")};
+
   display: flex;
-  // padding: 0rem 1rem;
+
+  padding: 0rem 1.5rem;
+
   flex-direction: column;
+
   align-items: center;
+
   bottom: 0.2rem;
+
   height: 100%;
+
   width: auto;
+
   box-shadow: 0.125rem 0.25rem 0.5rem #888888;
+
   overflow: hidden;
+
   border-radius: 20px;
+
   font-family: Roboto;
 
   & h1.header {

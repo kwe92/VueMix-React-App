@@ -1,4 +1,12 @@
-export const dataModel = (title, overview, date, rating, votes, img, bdimg) => {
+export const dataModel = ({
+  title,
+  overview,
+  date,
+  rating,
+  votes,
+  img,
+  bdimg,
+}) => {
   return {
     original_title: title,
     overview: overview,
