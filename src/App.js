@@ -11,15 +11,9 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { SearchBar } from "./components/search_bar/SearchBar";
 
 const App = (props) => {
-  // TODO: Extract into its own custom hook to keep code DRY
-  // TODO: Finish custom app bar
   // TODO: Create a soruce of truth theme file
   // TODO: Add sign in page for google auth
   // TODO: Add Trending dropdown?
-
-  //TODO: add index.css to have a base styling
-  //TODO: Fix the navbar so that it is not absolute as there is no need to be
-  //TODO: Refactor the navbar to look better and bee more user friendly
 
   const [isLightMode, setIsLightMode] = useMode();
   const [title, setTitle] = useState("");
