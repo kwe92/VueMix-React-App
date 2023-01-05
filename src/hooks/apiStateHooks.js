@@ -69,7 +69,6 @@ const useTvShowsState = () => {
 };
 
 // Trending API Call
-// TV Shows API Call
 const useTrendingState = () => {
   const api = `https://api.themoviedb.org/3/trending/all/week?api_key=${apikey}`;
   const [trendingData, setTrendingDataState] = useState([]);
