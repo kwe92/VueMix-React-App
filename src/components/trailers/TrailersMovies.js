@@ -21,9 +21,12 @@ export const TrailerMovies = (props) => {
     setShowModal(false);
   };
 
-  const CloseButton = <span onClick={handleModalClose}>&times;</span>;
+  const CloseButton = (props) => (
+    <span onClick={handleModalClose}>&times;</span>
+  );
 
-  const VideoPlayer = (
+  //TODO: Fix the mobile Height | Create a custom styled commponent
+  const VideoPlayer = (props) => (
     <div style={{ height: "90%" }} id={"player"}>
       <ReactPlayer
         url={videoURL}
@@ -34,7 +37,7 @@ export const TrailerMovies = (props) => {
     </div>
   );
 
-  const ErrorMessage = (
+  const ErrorMessage = (props) => (
     <style.ErrorWrapper>
       <style.ErrorMessage isLightMode={props.isLightMode}>
         No Video Found
@@ -57,13 +60,13 @@ export const TrailerMovies = (props) => {
       >
         {videoURL ? (
           <>
-            {CloseButton}
-            {VideoPlayer}
+            <CloseButton />
+            <VideoPlayer />
           </>
         ) : (
           <>
-            {CloseButton}
-            {ErrorMessage}
+            <CloseButton />
+            <ErrorMessage />
           </>
         )}
       </style.VideoModal>
