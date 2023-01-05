@@ -6,26 +6,21 @@ import {
   StyledUlCards,
   ContentWrapper,
 } from "../../styles/styles";
-import { CustomElements } from "../../constants/CustomElements";
 
 const BaseLayoutGrid = (props) => {
   // destructure state and setState
   const [data, setDataState] = props.state;
-  let filteredData;
 
   //  Filter data based on title containing user input
-  props.filterVal
-    ? (filteredData = data.filter((ele) =>
-        isMatchingTitle(ele.original_title, props.filterVal)
-      ))
-    : (filteredData = data);
+  const filteredData = props.filterVal
+    ? data.filter((ele) => isMatchingTitle(ele.original_title, props.filterVal))
+    : data;
 
   // conentList:
   //  - an array of images on top of cards wrapped in <li> tags
-
   const conentList = filteredData.map((ele) => (
     <ContentWrapper key={ele.original_title}>
-      <CustomElements.ListItem>
+      <ListItem>
         <StyledWrapper>
           <StyledImageDisappear
             src={`https://image.tmdb.org/t/p/w500/${
@@ -43,12 +38,18 @@ const BaseLayoutGrid = (props) => {
             getTitle={props.getTitle}
           ></DetailCard>
         </StyledWrapper>
-      </CustomElements.ListItem>
+      </ListItem>
     </ContentWrapper>
   ));
   return (
     <StyledUlCards isLightMode={props.isLightMode}>{conentList}</StyledUlCards>
   );
 };
+
+const ListItem = ({ className, children }) => (
+  <li className={className} style={{ listStyleType: "none" }}>
+    {children}
+  </li>
+);
 
 export default BaseLayoutGrid;
