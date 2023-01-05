@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 //TODO: Remove inline styles into styled components
-const StyledCardContentImage = styled.img`
+const CardContentImage = styled.img`
   height: 18vw;
   width: 30vw;
 
@@ -26,37 +26,37 @@ const StyledCardContentImage = styled.img`
   }
 `;
 
-const StyledCardContentInfo = styled.div`
+const CardContentInfo = styled.div`
   padding: 0rem 1rem;
   text-align: center;
 `;
 
-const StyledCardContentTitle = styled.h2`
+const CardContentTitle = styled.h2`
   color: ${(props) => (props.isLightMode ? "black" : "white")};
   font-family: Roboto;
 `;
 
-const StyledCardContentDate = styled.p`
+const CardContentDate = styled.p`
   color: ${(props) => (props.isLightMode ? "black" : "white")};
   margin: 0rem 0rem 0.25rem 0rem;
   font-family: Roboto;
 `;
 
-const StyledCardContentRating = styled.div`
+const CardContentRating = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: Roboto;
 `;
 
-const StyledCardContentP = styled.p`
+const CardContentP = styled.p`
   padding-right: 0.25rem;
   margin: 0;
   color: ${(props) => (props.isLightMode ? "black" : "white")};
   font-family: Roboto;
 `;
 
-const StyledCardContentP2 = styled(StyledCardContentP)`
+const CardContentP2 = styled(CardContentP)`
   padding: 0rem 1rem 0.5rem;
 
   margin-top: 1rem;
@@ -64,7 +64,7 @@ const StyledCardContentP2 = styled(StyledCardContentP)`
   font-family: Roboto;
 `;
 
-const StyledUlStarsRow = styled.ul`
+const UlStarsRow = styled.ul`
   display: flex;
   padding: 0rem 0rem 0rem 0.25rem;
   margin: 0;
@@ -73,12 +73,12 @@ const StyledUlStarsRow = styled.ul`
 `;
 
 export {
-  StyledCardContentImage,
-  StyledCardContentInfo,
-  StyledCardContentTitle,
-  StyledCardContentDate,
-  StyledCardContentRating,
-  StyledCardContentP,
-  StyledCardContentP2,
-  StyledUlStarsRow,
+  CardContentImage,
+  CardContentInfo,
+  CardContentTitle,
+  CardContentDate,
+  CardContentRating,
+  CardContentP,
+  CardContentP2,
+  UlStarsRow,
 };
