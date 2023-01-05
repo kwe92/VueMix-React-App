@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-export default function AccountMenu({ icon }) {
+const AccountMenu = ({ icon }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -24,6 +24,7 @@ export default function AccountMenu({ icon }) {
       >
         {icon}
       </Button>
+      {/* <MaterialButton /> */}
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -39,4 +40,6 @@ export default function AccountMenu({ icon }) {
       </Menu>
     </>
   );
-}
+};
+
+export default AccountMenu;
