@@ -2,32 +2,42 @@ import styled from "styled-components";
 
 //TODO: Remove inline styles into styled components
 const CardContentImage = styled.img`
-  height: 18vw;
-  width: 30vw;
+  width: 100%;
 
-  @media (max-width: 800px) {
-    width: 18rem;
-    height: 12rem;
-  }
+  object-fit: contain;
 
-  @media (max-width: 450px) {
-    height: 8rem;
-    width: 12rem;
-  }
+  // TODO: Remove media queries?
 
-  @media (max-width: 400px) {
-    height: 12rem;
-    width: 18rem;
-  }
+  // @media (max-width: 800px) {
+  //   width: 18rem;
+  //   height: 12rem;
+  // }
 
-  @media (max-width: 300px) {
-    height: 10rem;
-    width: 16rem;
-  }
+  // @media (max-width: 450px) {
+  //   height: 8rem;
+  //   width: 12rem;
+  // }
+
+  // @media (max-width: 400px) {
+  //   height: 12rem;
+  //   width: 18rem;
+  // }
+
+  // @media (max-width: 300px) {
+  //   height: 10rem;
+  //   width: 16rem;
+  // }
 `;
 
 const CardContentInfo = styled.div`
-  padding: 0rem 1rem;
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1rem;
+
+  padding: 1rem 0rem;
+
   text-align: center;
 `;
 
@@ -59,7 +69,7 @@ const CardContentP = styled.p`
 const CardContentP2 = styled(CardContentP)`
   padding: 0rem 1rem 0.5rem;
 
-  margin-top: 1rem;
+  margin-bottom: 1rem;
 
   font-family: Roboto;
 `;

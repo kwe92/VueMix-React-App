@@ -36,7 +36,7 @@ const BaseLayoutGrid = (props) => {
             isLightMode={props.isLightMode}
             object={ele}
             getTitle={props.getTitle}
-          ></DetailCard>
+          />
         </StyledWrapper>
       </ListItem>
     </ContentWrapper>

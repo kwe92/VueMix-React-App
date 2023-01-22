@@ -9,6 +9,7 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledImageDisappear = styled.img`
+  margin: 1rem;
   display: block;
   width: 30vw;
   height: 42vw;
@@ -18,16 +19,13 @@ const StyledImageDisappear = styled.img`
   @media (max-width: 800px) {
     width: 18rem;
     height: 26rem;
+    margin: 0.5rem;
   }
 
   @media (max-width: 450px) {
-    width: 12rem;
-    height: 16rem;
-  }
-
-  @media (max-width: 400px) {
     width: 18rem;
     height: 24rem;
+    margin: 0.5rem 0;
   }
 
   @media (max-width: 300px) {
@@ -66,6 +64,9 @@ const StyledUlCards = styled.ul`
 `;
 
 const StyledCard = styled.div`
+
+  margin: 1rem;
+
   position: absolute;
 
   bottom: 0.20rem;
@@ -87,11 +88,14 @@ const StyledCard = styled.div`
   @media (max-width: 800px) {
     width: 18rem;
     height: 26rem;
+    margin: 0.5rem;
   }
 
   @media (max-width: 450px) {
-    width: 12rem;
-    height: 16rem;
+    width: 18rem;
+    height: 24rem;
+    margin: 0.5rem 0;
+
   }
 
   @media (max-width: 400px) {

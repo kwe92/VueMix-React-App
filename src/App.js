@@ -11,6 +11,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { SearchBar } from "./components/search_bar/SearchBar";
 
 const App = (props) => {
+  // TODO: Create a image component in assests?
   // TODO: Create a soruce of truth theme file
   // TODO: Add sign in page for google auth
   // TODO: Add Trending dropdown?
