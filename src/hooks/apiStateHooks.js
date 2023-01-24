@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import apikey from "../private/apikey/key";
 import { dataModel } from "../models/dataModel";
 
 // A Custom Hook to get movies state
 // Similar to a Provider on flutter??
 const useMoviesState = () => {
-  const api = `https://api.themoviedb.org/3/discover/movie?api_key=${apikey}`;
+  console.log("API KEY", process.env.REACT_APP_API_KEY);
+  const api = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}`;
   const [moviesData, SetMoviesData] = useState([]);
 
   // Movies API call
@@ -38,7 +38,7 @@ const useMoviesState = () => {
 
 // TV Shows API Call
 const useTvShowsState = () => {
-  const api = `https://api.themoviedb.org/3/discover/tv?api_key=${apikey}`;
+  const api = `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_API_KEY}`;
   const [tvShowsData, SetTvShowsData] = useState([]);
 
   const tvShow = async () => {
@@ -70,7 +70,7 @@ const useTvShowsState = () => {
 
 // Trending API Call
 const useTrendingState = () => {
-  const api = `https://api.themoviedb.org/3/trending/all/week?api_key=${apikey}`;
+  const api = `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_API_KEY}`;
   const [trendingData, setTrendingDataState] = useState([]);
 
   const trending = async () => {
