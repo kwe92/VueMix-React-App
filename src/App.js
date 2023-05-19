@@ -94,8 +94,13 @@ const App = (props) => {
           ></Route>
         </Routes>
       </StyledAppWrapper>
+      <PageButtons />
     </>
   );
 };
+
+const PageButtons = ({}) => (
+  <div style={{ height: "12.5rem", background: "grey" }}></div>
+);
 
 export default App;
