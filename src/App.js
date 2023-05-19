@@ -42,8 +42,6 @@ const App = (props) => {
     setShowModal(true);
   };
 
-  const modeHandler = (mode) => setIsLightMode(mode);
-
   return (
     <>
       <AppBar />

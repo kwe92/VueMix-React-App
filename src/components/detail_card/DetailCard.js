@@ -51,6 +51,9 @@ const DetailCard = (props) => {
         object={props.object}
         stars={stars}
       />
+      {/* <div style={{ color: "white", padding: "3rem" }}>
+        Hello I am some changed content
+      </div> */}
       <CardText isLightMode={props.isLightMode} object={props.object} />
     </StyledCard>
   );

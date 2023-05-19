@@ -20,6 +20,7 @@ export const StyledInputContainer = styled.div`
   background: rgb(38, 38, 38);
 
   caret-color: white;
+
   &: hover {
     background: rgb(64, 64, 64);
   }
