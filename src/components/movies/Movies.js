@@ -28,17 +28,22 @@ const PageButtons = ({}) => (
     </PageButton>
   </PageButtonContainer>
 );
+// TODO: Make Responsive to smaller devices
 
 const PageButtonContainer = styled.div`
   display: flex;
-  width: 50%;
-  height: 14rem;
+  width: 45%;
+  padding: 2rem 0 2rem 0;
   background-color: grey;
   align-items: center;
   justify-content: space-evenly;
 
   @media screen and (max-width: 800px) {
     width: 60%;
+  }
+
+  @media screen and (max-width: 450px) {
+    width: 100%;
   }
 `;
 
@@ -56,5 +61,8 @@ const PageButton = styled.button`
     width: 12rem;
   }
 `;
+
+const GapW = ({ width }) => <div style={{ width: `${width}px` }}></div>;
+const GapH = ({ height }) => <div style={{ height: `${height}px` }}></div>;
 
 export default Movies;
