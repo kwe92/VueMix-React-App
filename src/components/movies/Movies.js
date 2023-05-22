@@ -26,7 +26,7 @@ const Movies = (props) => {
         isLightMode={props.isLightMode}
         filterVal={props.filterVal}
         getTitle={props.getTitle}
-      ></BaseLayoutGrid>
+      />
       <PageButtons nextPage={nextPage} prevPage={prevPage} />
     </Fragment>
   );
