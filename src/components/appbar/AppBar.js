@@ -55,7 +55,7 @@ const buttonLinks = pages.map((page) => {
 const Logo = (props) => (
   <StyledLogo>
     <BaseStyledNavLink to="">
-      <h4 name="title">VueMix</h4>
+      <Title name="title">VueMix</Title>
     </BaseStyledNavLink>
   </StyledLogo>
 );
@@ -69,6 +69,18 @@ const Menu = (props) => {
     </GiHamburgerMenuWrapper>
   );
 };
+
+const Title = styled.div`
+  font-size: 4rem;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 3rem;
+  }
+
+  @media screen and (max-width: 800px) {
+    font-size: 2.5rem;
+  }
+`;
 
 const Container = styled.div`
   display: flex;

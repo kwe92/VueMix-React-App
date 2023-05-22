@@ -4,9 +4,11 @@ import { dataModel } from "../models/dataModel";
 
 // A Custom Hook to get movies state
 // Similar to a Provider on flutter??
-const useMoviesState = () => {
+const useMoviesState = (pageNumber) => {
   console.log("API KEY", process.env.REACT_APP_API_KEY);
-  const api = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&page=2`;
+  const api = `https://api.themoviedb.org/3/discover/movie?api_key=${
+    process.env.REACT_APP_API_KEY
+  }&page=${String(pageNumber)}`;
   const [moviesData, SetMoviesData] = useState([]);
 
   // Movies API call
@@ -32,13 +34,15 @@ const useMoviesState = () => {
     movieCall();
   };
 
-  useEffect(getMovies, []);
+  useEffect(getMovies, [pageNumber]);
   return [result, SetMoviesData];
 };
 
 // TV Shows API Call
-const useTvShowsState = () => {
-  const api = `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_API_KEY}`;
+const useTvShowsState = (pageNumber) => {
+  const api = `https://api.themoviedb.org/3/discover/tv?api_key=${
+    process.env.REACT_APP_API_KEY
+  }&page=${String(pageNumber)}`;
   const [tvShowsData, SetTvShowsData] = useState([]);
 
   const tvShow = async () => {
@@ -64,13 +68,13 @@ const useTvShowsState = () => {
     tvShow();
   };
 
-  useEffect(getTvShow, []);
+  useEffect(getTvShow, [pageNumber]);
   return [result, SetTvShowsData];
 };
 
 // Trending API Call
-const useTrendingState = () => {
-  const api = `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_API_KEY}`;
+const useTrendingState = (pageNumber) => {
+  const api = `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_API_KEY}&page=${pageNumber}`;
   const [trendingData, setTrendingDataState] = useState([]);
 
   const trending = async () => {
@@ -96,7 +100,7 @@ const useTrendingState = () => {
     trending();
   };
 
-  useEffect(getTrending, []);
+  useEffect(getTrending, [pageNumber]);
   return [result, setTrendingDataState];
 };
 
