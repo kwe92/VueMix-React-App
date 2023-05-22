@@ -27,17 +27,17 @@ const Movies = (props) => {
         filterVal={props.filterVal}
         getTitle={props.getTitle}
       ></BaseLayoutGrid>
-      <PageButtons setPage={nextPage} prevPage={prevPage} />
+      <PageButtons nextPage={nextPage} prevPage={prevPage} />
     </Fragment>
   );
 };
 
-const PageButtons = ({ setPage, prevPage }) => (
+const PageButtons = ({ nextPage, prevPage }) => (
   <PageButtonContainer>
     <PageButton type="button" onClick={prevPage}>
       <p>Back</p>
     </PageButton>
-    <PageButton type="button" onClick={setPage}>
+    <PageButton type="button" onClick={nextPage}>
       <p>Next</p>
     </PageButton>
   </PageButtonContainer>
