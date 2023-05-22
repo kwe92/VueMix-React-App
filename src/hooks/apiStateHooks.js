@@ -4,9 +4,11 @@ import { dataModel } from "../models/dataModel";
 
 // A Custom Hook to get movies state
 // Similar to a Provider on flutter??
-const useMoviesState = () => {
+const useMoviesState = (pageNumber) => {
   console.log("API KEY", process.env.REACT_APP_API_KEY);
-  const api = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&page=2`;
+  const api = `https://api.themoviedb.org/3/discover/movie?api_key=${
+    process.env.REACT_APP_API_KEY
+  }&page=${String(pageNumber)}`;
   const [moviesData, SetMoviesData] = useState([]);
 
   // Movies API call
@@ -32,7 +34,7 @@ const useMoviesState = () => {
     movieCall();
   };
 
-  useEffect(getMovies, []);
+  useEffect(getMovies, [pageNumber]);
   return [result, SetMoviesData];
 };
 
