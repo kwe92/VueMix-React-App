@@ -1,29 +1,43 @@
-import React from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import useMoviesState from "../../hooks/apiStateHooks";
 import BaseLayoutGrid from "../base/BaseLayoutGrid";
 import styled from "styled-components";
 
 const Movies = (props) => {
-  const [movies, setMoviesState] = useMoviesState();
+  const [pageNumber, setPageNumber] = useState(1);
+  const [movies, setMoviesState] = useMoviesState(pageNumber);
+  const state = [movies, setMoviesState];
+  console.log("PAge Number: ", pageNumber);
+
+  const nextPage = () => {
+    setPageNumber((prevPageNumber) => prevPageNumber + 1);
+  };
+
+  const prevPage = () => {
+    setPageNumber((prevPageNumber) =>
+      prevPageNumber > 1 ? prevPageNumber - 1 : prevPageNumber
+    );
+  };
+
   return (
-    <>
+    <Fragment>
       <BaseLayoutGrid
-        state={[movies, setMoviesState]}
+        state={state}
         isLightMode={props.isLightMode}
         filterVal={props.filterVal}
         getTitle={props.getTitle}
       ></BaseLayoutGrid>
-      <PageButtons />
-    </>
+      <PageButtons setPage={nextPage} prevPage={prevPage} />
+    </Fragment>
   );
 };
 
-const PageButtons = ({}) => (
+const PageButtons = ({ setPage, prevPage }) => (
   <PageButtonContainer>
-    <PageButton type="button">
+    <PageButton type="button" onClick={prevPage}>
       <p>Back</p>
     </PageButton>
-    <PageButton type="button">
+    <PageButton type="button" onClick={setPage}>
       <p>Next</p>
     </PageButton>
   </PageButtonContainer>
@@ -61,8 +75,5 @@ const PageButton = styled.button`
     width: 12rem;
   }
 `;
-
-const GapW = ({ width }) => <div style={{ width: `${width}px` }}></div>;
-const GapH = ({ height }) => <div style={{ height: `${height}px` }}></div>;
 
 export default Movies;
