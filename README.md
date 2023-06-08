@@ -37,4 +37,5 @@
 
 #### Author: Kweayon Clark
 
-###### Original Project: 
+##### Original Project Author: https://www.youtube.com/@coding_freaks
+###### Original Project: https://www.youtube.com/watch?v=_A-O22Eezac (Used as a visual reference)
