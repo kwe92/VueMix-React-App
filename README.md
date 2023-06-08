@@ -34,10 +34,7 @@
 
 ### Mobile View
 
-<img width="1440" alt="Screenshot 2023-02-06 at 4 17 35 PM" src="https://user-images.githubusercontent.com/47009536/217102798-72d95eb5-95c9-4ffd-ada2-9187a19303a5.png">
-
-<img width="1440" alt="Screenshot 2023-02-06 at 4 17 41 PM" src="https://user-images.githubusercontent.com/47009536/217102823-fb1038a0-ba87-41a4-bc72-37eacc0f790e.png">
 
 #### Author: Kweayon Clark
 
-###### Original Project: Section 8 of: https://www.udemy.com/course/react-front-to-back-2022/
+###### Original Project: 
