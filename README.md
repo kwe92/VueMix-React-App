@@ -29,7 +29,7 @@
   
 ## Screenshots
 
-### Desktop View]
+### Desktop View
 
 <img width="1440" alt="desktop-01" src="https://github.com/kwe92/VueMix-React-App/assets/47009536/af4cc5e6-dc6b-4222-ab58-4975b5ef9b87">
 
